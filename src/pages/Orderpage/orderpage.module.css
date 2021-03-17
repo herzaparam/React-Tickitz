@@ -1,0 +1,12 @@
+.contfluid{
+    background-color: white;
+}
+.contfluid>img{
+    height: 500px;
+    width: 700px;
+    object-fit: contain;
+}
+.movieselect{
+    display: flex;
+    justify-content: space-between;
+}

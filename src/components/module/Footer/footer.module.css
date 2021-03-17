@@ -1,0 +1,19 @@
+.disp{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.disp > img{
+    object-fit: contain;
+}
+.disp > p {
+    margin: 0;
+    margin-left: 15px;
+}
+
+.Col > p {
+    margin: 5px;
+}
+.imgsponsor{
+    margin-top: 15px ;
+}

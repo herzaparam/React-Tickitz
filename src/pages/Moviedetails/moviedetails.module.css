@@ -1,0 +1,210 @@
+.center{
+    justify-content: center;
+}
+.section{
+    padding: 2em 5%;
+}
+.flex{
+    display: flex;
+}
+.border{
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 1.5em;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.grid-2{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+.grid-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+}
+.grid-4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: .5em;
+}
+.mgrl-1{
+    margin: 0 1em;
+}
+.mgtb-2{
+    margin: 2em 0;
+}
+.paddingr-1{
+    padding-right: 1em;
+}
+
+.grow-1{
+    flex-grow: 1;
+}
+.grow-2{
+    flex-grow: 2;
+}
+.grow-3{
+    flex-grow: 3;
+}
+.bg-grey{
+    background-color: #F5F6F8;
+}
+p.detail{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.75px;
+    color: #8692A6;
+    margin: 0;
+}
+p.desc{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.75px;
+    color: #121212;
+}
+.border-bot{
+    border-bottom: 1px solid #DEDEDE;
+
+}
+.desc-synopsis{
+    margin-top: 1em;
+}
+.desc-synopsis h4{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2rem; 
+    letter-spacing: 0.75px;
+    color: #000000;
+}
+.desc-synopsis p{
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.75px;
+    color: #4E4B66;
+}
+
+/* card section2 dibawah */
+.card-line{
+    padding: 1em ;
+}
+.card-img{
+    padding-left: 1em;
+    padding-top: 1.2em;
+}
+.card-img img{
+    width: 8em;
+    height: auto;
+    object-fit: contain;
+}
+p.card-title{
+    font-family: 'Mulish',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.75px;
+    color: #000000;
+
+}
+p.card-desc{
+    font-style: normal;
+    font-weight: 300;
+    font-size: .8rem;
+    line-height: 1rem;
+    letter-spacing: 0.75px;
+    color: #6E7191;
+}
+.card-time{
+    text-decoration: none;
+    color: #4E4B66;
+    letter-spacing: .75px;
+}
+.sp-bt{
+    justify-content: space-between;
+}
+.base-line{
+    align-items: baseline;
+}
+.price{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4rem;
+    letter-spacing: 0.75px;
+    color: #6B6B6B;
+}
+.price-sum{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: 0.75px;
+    color: #000000;
+}
+.card-line > button{
+    font-style: normal;
+    font-weight: 700;
+    font-size: .8rem;
+    text-align: center;
+    letter-spacing: 0.75px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5F2EEA;
+    color: #F7F7FC;
+    padding: .8em 3em;
+}
+.card-line > a{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: 0.75px;
+    color: #5F2EEA;
+}
+.line h4{
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 30px;
+    letter-spacing: 0.25px;
+    color: #14142B;
+    text-align: center;
+}
+button#dropdownMenuButton1{
+    color: #4E4B66;
+    background-color: #EFF0F6;
+    border-radius: 6px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    color: #4E4B66;
+    text-align: center;
+    width: 15em;
+    height: 3em;
+    margin: 2em;
+}
+button>img{
+    float: left;
+    vertical-align: middle;
+}
+.line-lit > a{
+    padding-left: 8em;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.75px;
+    color: #5F2EEA
+}
+.image > img{
+    width: 350px;
+    object-fit: contain;
+}

@@ -1,0 +1,19 @@
+.btn{
+    background-color: #5F2EEA;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: .5em ;
+    width: 200px;
+}
+.white{
+    background-color: white;
+    border: 1px solid #5F2EEA;
+    color: #5F2EEA;
+}
+.full{
+    width: 100%;
+}
+.none{
+    display: none;
+}
