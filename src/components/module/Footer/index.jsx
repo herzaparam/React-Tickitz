@@ -13,25 +13,25 @@ import style from './footer.module.css'
 function MyFooter() {
     return (
         <Container fluid >
-            <Row style={{ padding: '0 2em' }}>
-                <Col style={{ marginTop: '1.5em'}}>
+            <Row style={{ padding: '0 2em' }} className={style['grid-2']}>
+                <Col  className={style.sect}>
                     <img src={tickitz} alt="" />
                     <p>Stop waiting in line. Buy tickets conveniently, watch movies quietly</p>
                 </Col>
-                <Col style={{ marginTop: '1.5em'}}>
+                <Col className={style.sect}>
                     <h4>Explore</h4>
                     <p>Cinemas</p>
                     <p>Movies List</p>
                     <p>My Ticket</p>
                     <p>Notification</p>
                 </Col>
-                <Col style={{ marginTop: '1.5em'}}>
+                <Col className={style.sect}>
                     <h4>Our Sponsor</h4>
                     <img className={`${style.imgsponsor}`} src={ebuid} alt="ebuid" style={{ display: 'block' }} />
                     <img className={`${style.imgsponsor}`} src={cineone} alt="cineone" style={{ display: 'block' }} />
                     <img className={`${style.imgsponsor}`} src={hiflix} alt="hiflix" style={{ display: 'block' }} />
                 </Col>
-                <Col style={{ marginTop: '1.5em'}}>
+                <Col className={style.sect}>
                     <h4>Follow Us</h4>
                     <div className={`${style.disp}`}>
                         <img src={fbline} alt="" />

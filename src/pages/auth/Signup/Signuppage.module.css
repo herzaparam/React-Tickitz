@@ -1,9 +1,15 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+*{
+    font-family: 'Mulish', sans-serif !important;
+}
 .container{
     /* background-color: blue; */
     display: flex;
     height: auto;
     width: auto;
+}
+#tickitzpurpleimg{
+    display: none;
 }
 .container-bg{
     background-color: burlywood;
@@ -86,6 +92,9 @@ h4{
     font-size: 1.6vw;
     margin-top: 15px;
     color: #4E4B66;
+}
+.errEmail{
+    color: red;
 }
 .btn-div{
     width:100%;
@@ -222,4 +231,51 @@ hr{
 .line3{
     flex-grow: 3;
     
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .container-form{
+        width: 100%;
+        padding: 5em 5%;
+    }
+    .container-bg{
+        display: none;
+    }
+    .box1 > h3{
+        font-size: 2rem;
+        
+    }
+    .box1 > h4{
+        display: none;
+    }
+    input[type=text], input[type=password]{
+        height: 2.3em;
+        padding-left: .7em;
+        font-size: 2rem;
+    }
+    .f-password{
+        font-size: 1.7rem;
+    }
+    .line2 > p {
+        font-size: 1.5rem;
+    }
+    .btn-div{
+        justify-content: space-around;
+    }
+    .btn{
+        height: min-content;
+        width: min-content;
+    }
+    .btn > p {
+        display: none;
+    }
+    .btn > img {
+        height: 45px;
+        width: 45px;
+    }
+    .box0 {
+        display: block;
+
+    }
 }

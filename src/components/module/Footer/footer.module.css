@@ -17,3 +17,14 @@
 .imgsponsor{
     margin-top: 15px ;
 }
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .grid-2{
+        flex-direction: column;
+        
+    }
+    .sect{
+        margin-top: 2em ;
+    }
+   
+}

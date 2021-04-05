@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import MyNavbar from '../../components/module/navbar'
 import Footer from '../../components/module/Footer'
+import { connect } from 'react-redux'
+import { getUser } from '../../configs/redux/actions/user'
+import { getLocation } from '../../configs/redux/actions/location'
+import {ebuid, hiflix, cineone} from '../../assets/image/index'
 
 export class Moviedetails extends Component {
-
     state = {
         films: {
             movie_Id: '',
@@ -18,13 +21,17 @@ export class Moviedetails extends Component {
             image: '',
             movie_duration: '',
             price: ''
-        }
+        },
+
     }
 
 
     componentDidMount() {
+        this.props.getUser()
+        this.props.getLocation()
         const id = this.props.match.params.idfilm;
-        Axios.get(`${process.env.REACT_APP_API_MOVIES}${id}`)
+        console.log(this.props.match);
+        Axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/${id}`)
             .then((res) => {
                 this.setState({
                     films: res.data.result[0]
@@ -33,11 +40,30 @@ export class Moviedetails extends Component {
             .catch((err) => {
                 console.log(err);
             })
+
     }
+    routeChangeById = (id) => {
+        this.props.history.push(`/orderpage/${id}`)
+    }
+
+    displayImage = (bioskop) =>{
+        if(bioskop === 'ebuid'){
+            return <img src={ebuid} alt="" srcset=""/>
+        }else if(bioskop === 'hiflix'){
+            return <img src={hiflix} alt="" srcset=""/>
+        }else{
+            return <img src={cineone} alt="" srcset=""/>
+        }
+    }
+    routeChangeSignUp = () => {
+        this.props.history.push(`/signup`)
+    }
+    
     render() {
+        
         return (
             <div>
-                <MyNavbar />
+                <MyNavbar routeSignUp={() => this.routeChangeSignUp()} isLoggedIn={this.props.user.isLoggedIn} allFilm={this.props.allFilms} userImage={this.props.user.user.image} />
                 <main className="cont">
                     <div className={[style['section'], style['flex']].join(' ')}>
                         <div className={[style['border'], style['image'], style['mgrl-1']].join(' ')}>
@@ -99,162 +125,39 @@ export class Moviedetails extends Component {
                             </div>
                         </div>
                         <div className={[['line'], style['grid-3']].join(' ')}>
-                            <div className={[['card'], style['flex-col']].join(' ')}>
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/ebuid.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>ebv.id</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
+                            {this.props.location.location.map((item) =>
+                                <div className={[['card'], style['flex-col']].join(' ')}>
+                                    <div className={[style['card-line'], style['flex']].join(' ')}>
+                                        <div className={[style['card-img'], style['grow-1']].join(' ')}>
+                                            {this.displayImage(item.bioskop)}
+                                        </div>
+                                        <div className={[style['card-desc'], style['grow-2']].join(' ')}>
+                                            <p className={style['card-title']}>{item.bioskop}</p>
+                                            <p className={style['card-desc']}>{item.cinema}</p>
+                                        </div>
+                                    </div>
+                                    <div className={[style['card-line'], style['grid-4']].join(' ')}>
+                                        <Link to="" className={style["card-time"]}>08:30am</Link>
+                                        <Link to="" className={style["card-time"]}>10:30am</Link>
+                                        <Link to="" className={style["card-time"]}>12:00pm</Link>
+                                        <Link to="" className={style["card-time"]}>02:00pm</Link>
+                                        <Link to="" className={style["card-time"]}>04:30pm</Link>
+                                        <Link to="" className={style["card-time"]}>07:00pm</Link>
+                                        <Link to="" className={style["card-time"]}>08:30pm</Link>
+                                    </div>
+                                    <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
+                                        <p className="price">price</p>
+                                        <p className={style['price-sum']}>Rp.{item.price} /seat</p>
+                                    </div>
+                                    <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
+                                        <button onClick={() => this.routeChangeById(this.props.match.params.idfilm)}>Book Now</button>
+                                        <Link to="" className={style['paddingr-1']}>add to cart</Link>
                                     </div>
                                 </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
-                            <div className={[['card'], style['flex-col'], ['dnone']].join(' ')}>
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/cineone21.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>Cineone21</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
-                                    </div>
-                                </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
-                            <div className={[['card'], style['flex-col'], ['dnone']].join(' ')}>
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/hiflix.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>hiflix Cinema</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
-                                    </div>
-                                </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
-                            <div className="card flex-col">
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/ebuid.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>ebv.id</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
-                                    </div>
-                                </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
-                            <div className={[['card'], style['flex-col'], ['dnone']].join(' ')}>
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/cineone21.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>Cineone21</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
-                                    </div>
-                                </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
-                            <div className={[['card'], style['flex-col'], ['dnone']].join(' ')}>
-                                <div className={[style['card-line'], style['flex']].join(' ')}>
-                                    <div className={[style['card-img'], style['grow-1']].join(' ')}><img src="/Movie detail/image/logo/hiflix.png" alt="" /></div>
-                                    <div className={[style['card-desc'], style['grow-2']].join(' ')}>
-                                        <p className={style['card-title']}>hiflix Cinema</p>
-                                        <p className={style['card-desc']}>whatever street no.12 South Purwokerto</p>
-                                    </div>
-                                </div>
-                                <div className={[style['card-line'], style['grid-4']].join(' ')}>
-                                    <Link to="" className={style["card-time"]}>08:30am</Link>
-                                    <Link to="" className={style["card-time"]}>10:30am</Link>
-                                    <Link to="" className={style["card-time"]}>12:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>02:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>04:30pm</Link>
-                                    <Link to="" className={style["card-time"]}>07:00pm</Link>
-                                    <Link to="" className={style["card-time"]}>08:30pm</Link>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <p className="price">price</p>
-                                    <p className={style['price-sum']}>$10.00/seat</p>
-                                </div>
-                                <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
-                                    <button>Book Now</button>
-                                    <Link to="" className={style['paddingr-1']}>add to cart</Link>
-                                </div>
-                            </div>
+                            )}
+
+
+
 
                         </div>
                         <div className={[['line'], style['flex'], style['mgtb-2'], ['line-2']].join(' ')}>
@@ -269,5 +172,19 @@ export class Moviedetails extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer,
+        location: state.locationReducer
+    }
+}
+const mapDispatchToProps = dispatch => ({
+    getUser: () => {
+        dispatch(getUser());
+    },
+    getLocation: () => {
+        dispatch(getLocation())
+    }
+});
 
-export default Moviedetails
+export default connect(mapStateToProps, mapDispatchToProps)(Moviedetails)

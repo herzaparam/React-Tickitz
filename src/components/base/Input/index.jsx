@@ -2,7 +2,6 @@ import React from 'react'
 import style from './input.module.css'
 
 function Input({ type, placeholder, name, label, onChange, setValue}) {
-    
     return (
         <div className={['input']}>
             <label className={`${style.label}`} htmlFor={name}>{label}</label><br/>

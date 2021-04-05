@@ -1,6 +1,7 @@
 .card{
     min-width: 200px;
-    height: min-content;
+    max-width:200px;
+    height: 100%;
     border: 3px solid white;
     padding: 15px;
     margin: 20px;
@@ -12,4 +13,17 @@
 }
 .card > p {
     font-size: 12px;
+}
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .card{
+        min-width: 170px;
+        
+    }
+    .card > h5{
+        font-size: 16px;
+    }
+    .card > p{
+        font-size: 14px
+    }
 }

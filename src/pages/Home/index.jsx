@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import MyNavbar from '../../components/module/navbar'
 import MyFooter from '../../components/module/Footer'
 import Card from '../../components/base/Card'
@@ -7,63 +7,51 @@ import MyCard from '../../components/base/MyCard'
 import rectone from '../../assets/image/rectangle1.png'
 import recttwo from '../../assets/image/rectangle2.png'
 import rectthree from '../../assets/image/rectangle3.png'
-import Axios from 'axios'
 import style from './home.module.css'
+import { connect } from 'react-redux'
+import { getMovie } from '../../configs/redux/actions/movie'
+import { getUser } from '../../configs/redux/actions/user'
+
 
 export class Home extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            films: []
-        }
-    }
-
     componentDidMount() {
-        Axios.get(`${process.env.REACT_APP_API_MOVIES}`)
-            .then((res) => {
-                this.setState({
-                    films: res.data.result
-                })
-            }).catch(() => {
-                alert('cannot get movies ')
-            })
+        this.props.getMovie()
+        this.props.getUser()
     }
-    routeChangeById = (id) =>{
+    routeChangeById = (id) => {
         this.props.history.push(`/moviedetails/${id}`)
     }
-    routeChangeSignUp = () =>{
+    routeChangeSignUp = () => {
         this.props.history.push(`/signup`)
-
     }
 
     render() {
         return (
             <div>
-                <MyNavbar routeSignUp={()=> this.routeChangeSignUp()}/>
+                <MyNavbar routeSignUp={() => this.routeChangeSignUp()} isLoggedIn={this.props.user.isLoggedIn} allFilm={this.props.allFilms} userImage={this.props.user.user.image} />
                 <div className={style.sectone}>
                     <h1 className={style['headingstyle']}><span className={style.spanstyle}>Nearest Cinema, Newest Movie<br /></span> Find out now!</h1>
                     <div className={style.contimg}>
-                        <img src={rectone} alt=""  id={style.imgone}/>
-                        <img src={recttwo} alt="" id={style.imgtwo}/>
-                        <img src={rectthree} alt=""  id={style.imgthree}/>
+                        <img src={rectone} alt="" id={style.imgone} />
+                        <img src={recttwo} alt="" id={style.imgtwo} />
+                        <img src={rectthree} alt="" id={style.imgthree} />
                     </div>
                 </div>
                 <div className="container-fluid" style={{ backgroundColor: '#F5F6F8', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 5%' }}>
                         <h3 style={{ color: '#5F2EEA' }}>Now Showing</h3>
-                        <p style={{ color: '#5F2EEA' }}><Link to="">view all</Link></p>
+                        <p style={{ color: '#5F2EEA' }}><Link to="/allmovies">view all</Link></p>
                     </div>
                     <div className={style['card-show']} id={style['style-2']}>
-                        {this.state.films.map((item) =>
-                            <Card img={item.image} />
+                        {this.props.nowFilms.map((item) =>
+                            <Card img={item.image} key={item.movie_Id} />
                         )}
                     </div>
                     <section className={style['section-three']}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 0' }}>
-                        <h3 style={{ color: '#5F2EEA' }}>Upcoming Movies</h3>
-                        <p style={{ color: '#5F2EEA' }}><Link to="">view all</Link></p>
-                    </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 0' }}>
+                            <h3 style={{ color: '#5F2EEA' }}>Upcoming Movies</h3>
+                            <p style={{ color: '#5F2EEA' }}><Link to="/allmovies">view all</Link></p>
+                        </div>
                         <div className={style['overflow']} >
                             <button>January</button>
                             <button>February</button>
@@ -78,10 +66,10 @@ export class Home extends Component {
                             <button>November</button>
                             <button>December</button>
                         </div>
-                        <div className={[style['cont-up-movies'], style['overflow'] ].join(' ')} id={style['style-2']}>
-                        {this.state.films.map((item) =>
-                            <MyCard title={item.title} genre={item.genre} img={item.image} routeChange={()=>this.routeChangeById(item.movie_Id)}/>
-                        )}
+                        <div className={[style['cont-up-movies'], style['overflow']].join(' ')} id={style['style-2']}>
+                            {this.props.upFilms.map((item) =>
+                                <MyCard title={item.title} genre={item.genre} img={item.image} routeChange={() => this.routeChangeById(item.movie_Id)} key={item.movie_Id} />
+                            )}
                         </div>
                     </section>
                     <section className={style['section-four']}>
@@ -101,5 +89,21 @@ export class Home extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        allFilms: state.movieReducer.allFilms,
+        nowFilms: state.movieReducer.nowFilms,
+        upFilms: state.movieReducer.upFilms,
+        user: state.userReducer
+    }
+}
+const mapDispatchToProps = dispatch => ({
+    getMovie: () => {
+        dispatch(getMovie());
+    },
+    getUser: () => {
+        dispatch(getUser());
+    }
+});
 
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

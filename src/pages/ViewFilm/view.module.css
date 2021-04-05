@@ -1,0 +1,31 @@
+
+.card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2em;
+    padding-top: 2em;
+}
+.cardFilm{
+    width: 100%;
+    padding-top: 1em;
+    border: none !important;
+}
+.cardFilm > img{
+    width: 8rem;
+    margin: auto;
+}
+.card-title{
+    font-size: 1rem;
+}
+.card-text{
+    font-size: .9rem;
+}
+.button {
+    border: none;
+    background-color: #5f2eea;
+    color: white;
+    font-weight: 600;
+    width: 90%;
+    height: 2.5em;
+    border-radius: 8px;
+}

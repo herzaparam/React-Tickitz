@@ -12,6 +12,8 @@ import warning from '../../assets/image/warning-icon.png'
 import MyNavbar from '../../components/module/navbar'
 import MyFooter from '../../components/module/Footer'
 import MyButton from '../../components/base/Button'
+import {withRouter} from 'react-router-dom'
+
 
 function index() {
     return (
@@ -102,4 +104,4 @@ function index() {
     )
 }
 
-export default index
+export default withRouter(index)

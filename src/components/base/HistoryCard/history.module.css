@@ -1,0 +1,12 @@
+.postdiv{
+    display: flex;
+    justify-content: space-between;
+}
+.post{
+    width: 95%;
+    height: min-content;
+    margin: 1em 1em;
+    padding: 1em;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}

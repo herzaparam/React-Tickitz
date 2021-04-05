@@ -15,8 +15,7 @@
     color: #A0A3BD;
     font-weight: 400;
 }
-.sectone { 
-    height: 90vh; 
+.sectone {  
     display: flex; 
     align-items: center; 
 }
@@ -156,6 +155,7 @@ h3 > a{
 }
 .cont-up-movies{
     display: flex;
+    height: min-content;
     
 }
 .card1{
@@ -278,4 +278,83 @@ input::placeholder{
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #5f2eea;
+}
+
+
+
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {  }
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .cont-join-content > input[type=text]{
+        margin: 0 0 0 12em;
+    }
+    .cont-join-content > h1 {
+        margin-bottom: 1em;
+    }
+ }
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+    .cont-join-content > input[type=text]{
+        margin: 0 0 0 10em;
+    }
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+    .cont-join-content > input[type=text]{
+        margin: 0 0 0 8em;
+        padding-bottom: 10px;
+    }
+    input::placeholder{
+        font-size: 18px;
+        text-align: left;
+    }
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .sectone{
+        flex-direction: column;
+        padding: 1em;
+    }
+    .sectone > h1{
+        padding-left: 1em;
+        margin-bottom: .5em;
+    }
+    .contimg{
+        padding: 0;
+        height: 57vw;
+    }
+    .contimg > img{
+        width: 4em;
+        height: 15em;
+    }
+
+    .cont-join-content{
+        padding: 0 2em;
+    }
+    .cont-join-content > input[type=text]{
+        display: inline-block;
+        margin: 0 ;
+        height: 1.2em;
+        width: 80%;
+        text-align: left;
+    }
+    input::placeholder{
+        font-size: 18px;
+        text-align: left;
+    }
+    .cont-join-content > button{
+        height: 1.7em;
+        vertical-align: baseline;
+    }
+    .cont-join-content > h1 {
+        font-size: 1.3rem;
+    }
+    .cont-join-content > p {
+        font-size: .7rem;
+    }
 }

@@ -17,3 +17,10 @@
 .none{
     display: none;
 }
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .btn{
+        height: 2.5em;
+        font-size: 2rem;
+    }
+}

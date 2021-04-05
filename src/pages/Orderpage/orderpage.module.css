@@ -1,12 +1,37 @@
-.contfluid{
-    background-color: white;
-}
-.contfluid>img{
+
+.contFluid>img{
     height: 500px;
     width: 700px;
     object-fit: contain;
 }
 .movieselect{
     display: flex;
+    height: 3em;
     justify-content: space-between;
+}
+.movieselect > h5 {
+    font-weight: 700;
+    margin: auto 1em;
+}
+.detailed{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.totaled{
+    display: flex;
+    justify-content: space-between;
+}
+.totaled > p {
+    font-weight: 700 ;
+}
+.cont-fluid{
+    background-color: white;
+    border-radius: 10px;
+}
+.movieselect > button{
+    background-color: #5f2eea;
+    border-radius: 8px;
+    border: none;
+    color: white;
 }
