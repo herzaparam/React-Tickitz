@@ -4,7 +4,6 @@ import MyButton from '../../base/Button'
 import { tickitzpurpleimg, searchlogo, defaultimage } from '../../../assets/image'
 import style from './navbar.module.css'
 import { useState } from 'react'
-import {useSelector} from 'react-redux'
 
 function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
     let history = useHistory();
