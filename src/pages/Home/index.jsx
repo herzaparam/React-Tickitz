@@ -40,7 +40,7 @@ export class Home extends Component {
                 <div className="container-fluid" style={{ backgroundColor: '#F5F6F8', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 5%' }}>
                         <h3 style={{ color: '#5F2EEA' }}>Now Showing</h3>
-                        <p style={{ color: '#5F2EEA' }}><Link to="/allmovies">view all</Link></p>
+                        <p style={{ color: '#5F2EEA' }}><Link to="/allmovies">view alll</Link></p>
                     </div>
                     <div className={style['card-show']} id={style['style-2']}>
                         {this.props.nowFilms.map((item) =>
