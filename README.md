@@ -19,12 +19,19 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Preview
 here's some preview for the site ..
-
+#### Home page
+![home page](https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/home.png "home page")
+#### Movie detail page
+![detail page](https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/movie%20details.png "movie detail page")
+#### Order page
+![order page](https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/order.png "order page")
+#### Payment page
+![payment page](https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/payment.png "payment page")
 
 ## Colaborator
 [Herza Paramayudhanto](https://github.com/herzaparam)
 
-### Thanks to
+#### Thanks to
 [Risano Akbar](https://github.com/muhammadrisano)
 
 ## Backend Repositories
