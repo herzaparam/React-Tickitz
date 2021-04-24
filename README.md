@@ -35,10 +35,10 @@ here's some preview for the site ..
 [Risano Akbar](https://github.com/muhammadrisano)
 
 ## Backend Repositories
-[here](https://github.com/herzaparam/back-end-intermediate.git)
+visit [here](https://github.com/herzaparam/back-end-intermediate.git)
 
 ## Publication
-[https://tickitz-movie.netlify.app/](https://tickitz-movie.netlify.app/)
+visit here : [https://tickitz-movie.netlify.app/](https://tickitz-movie.netlify.app/)
 
 
 
