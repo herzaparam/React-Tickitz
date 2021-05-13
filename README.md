@@ -11,7 +11,7 @@ Website for booking and payment ticket films where user can find which film are 
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Preview](#preview)
-* [Back end Repositories](#Back end Repositories)
+* [Back end Repositories](#Back-end-Repositories)
 * [Contributor](#Contributor)
 
 ## Module and Packages
