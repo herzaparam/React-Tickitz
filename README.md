@@ -54,10 +54,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Preview
 here's some preview from this site ..
 <div align="center">
-  <img width="450" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/home.png" alt="Home page">
-  <img width="450" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/movie%20details.png" alt="Movie Details Page">
-  <img width="450" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/order.png" alt="Order Page">
-  <img width="450" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/payment.png" alt="Payment Page">
+  <img width="430" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/home.png" alt="Home page">
+  <img width="430" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/movie%20details.png" alt="Movie Details Page">
+  <img width="430" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/order.png" alt="Order Page">
+  <img width="430" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/payment.png" alt="Payment Page">
 </div>
 
 ## Publication
