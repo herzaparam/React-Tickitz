@@ -69,8 +69,8 @@ visit [here](https://github.com/herzaparam/back-end-intermediate.git)
 ## Contributor
 [Herza Paramayudhanto](https://github.com/herzaparam)
 
-contact :
-herzaparam@gmail.com
+### contact :
+If you want to contact me you can reach me at herzaparam@gmail.com
 
 
 
