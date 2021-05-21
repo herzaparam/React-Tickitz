@@ -6,6 +6,7 @@ import Orderpage from '../pages/Orderpage'
 import Paymentpage from '../pages/Paymentpage'
 import Profilepage from '../pages/Profilepage'
 import ViewFilm from '../pages/ViewFilm'
+import ForgotPass from '../pages/auth/Forgotpass'
 
 
 export {
@@ -16,5 +17,6 @@ export {
     Orderpage,
     Paymentpage,
     Profilepage,
-    ViewFilm
+    ViewFilm,
+    ForgotPass
 }

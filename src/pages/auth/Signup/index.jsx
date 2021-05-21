@@ -1,32 +1,34 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+
 import { bgimg, logotickitz, tickitzpurpleimg, googleicon, fbicon } from '../../../assets/image/'
 import style from './Signuppage.module.css'
 import Input from '../../../components/base/Input'
 import MyButton from '../../../components/base/Button'
 import Axios from 'axios'
+import Swal from 'sweetalert2'
 
 class Signup extends Component {
+
     constructor() {
         super()
         this.state = {
-           user :{
+            user: {
                 email: '',
                 password: '',
                 errEmail: '',
                 errPassword: ''
-           },
-           isLoading: false
-            
-            }
+            },
+            isLoading: false
+        }
     }
     handleChange = (e) => {
         this.setState({
-                user:{
+            user: {
                 ...this.state.user,
-                    [e.target.name]: e.target.value
+                [e.target.name]: e.target.value
             }
-            })
+        })
     }
     validate = () => {
         let errEmail = '';
@@ -37,16 +39,14 @@ class Signup extends Component {
             errEmail = 'make sure your email include "@"'
         }
         if (errEmail) {
-            console.log(errEmail);
-            this.setState({ user:{errEmail}});
-            
+            this.setState({ user: { errEmail } });
             return false;
         }
         if (this.state.user.password === '') {
             errPassword = "password can't be empty"
         }
         if (errPassword) {
-            this.setState({user:{ errPassword} });
+            this.setState({ user: { errPassword } });
             return false
         }
         return true
@@ -60,25 +60,37 @@ class Signup extends Component {
                 email: this.state.user.email,
                 password: this.state.user.password
             }).then((res) => {
-                console.log(res);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'register success',
+                    text: res.data.message,
+                })
                 this.props.history.push('/signin')
             }).catch((err) => {
-                alert('email has already registered')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: err.response.data.message,
+                })
             })
         }
 
     }
 
+    componentDidMount(){
 
+    }
+
+    
     render() {
         return (
-            
             <div className={style['container']}>
                 <div className={style['container-bg']}>
                     <img src={bgimg} alt="" srcSet="" />
                     <div className={style['container-bg-content']}>
                         <img src={logotickitz} alt="" srcSet="" />
-                        <h2>Wait, Watch, Wow!</h2>
+                        <h2>Let's build your account </h2>
+                        <h5>To be a loyal moviegoer and access all of features, your details are required.</h5>
                     </div>
                 </div>
                 <div className={style['container-form']}>
@@ -97,7 +109,7 @@ class Signup extends Component {
                             <div className={style.errEmail}>{this.state.user.errPassword}</div><br />
                             <MyButton title="Sign up" color="" size="full" onClick={this.handleRegister} />
                         </form>
-                        <p className={style['f-password']}>Forgot your password? <Link to="">Reset now</Link></p>
+                        <p className={style['f-password']}>Already have an account? <Link to="/signin">Log in</Link></p>
                     </section>
                     <section className={style['box3']}>
                         <div className={style['line1']}><hr /></div>

@@ -7,21 +7,27 @@ import { useState } from 'react'
 
 function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
     let history = useHistory();
-    
+    const urlApi = process.env.REACT_APP_API_TICKITZ
+    const urlImg = process.env.REACT_APP_API_IMG
+
     const [searchTerm, setSearchTerm] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [authLogin, setAuthLogin] = useState(isLoggedIn)
 
     const handleShowSearch = (e) => {
         e.preventDefault();
+        if (showSearch === true) {
+            return setShowSearch(false)
+        }
         setShowSearch(true)
-
     }
-    const handleLogOut = (e) =>{
+    
+    const handleLogOut = (e) => {
         localStorage.removeItem("token")
         setAuthLogin(false)
         window.location.reload()
-    }    
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
@@ -82,10 +88,10 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
                             <MyButton title="Sign Up" onClick={routeSignUp} /> :
                             <div>
                                 <button className={`nav-link ${style.btnProfile}`} to="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={userImage === '' ? defaultimage : userImage} alt="" />
+                                    <img src={`${urlImg}${userImage}`} alt="" />
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><button className="dropdown-item" onClick={()=>{ history.push("/profile") }}>Profile</button></li>
+                                    <li><button className="dropdown-item" onClick={() => { history.push("/profile") }}>Profile</button></li>
                                     <li><button className="dropdown-item" to="#" onClick={handleLogOut}>Logout</button></li>
                                 </ul>
                             </div>

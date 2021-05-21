@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './Signinpage.module.css'
 import { bgimg, logotickitz, tickitzpurpleimg, googleicon, fbicon } from '../../../assets/image/'
 import Input from '../../../components/base/Input'
 import MyButton from '../../../components/base/Button'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { login } from '../../../configs/redux/actions/user'
+import Swal from 'sweetalert2'
+import qs from 'query-string'
+import axios from 'axios'
 
 function Signin() {
     const dispatch = useDispatch()
+    let location = useLocation();
     const history = useHistory()
+    const urlApi = process.env.REACT_APP_API_TICKITZ
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -23,16 +28,56 @@ function Signin() {
         }
         dispatch(login(data))
             .then((res) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Success!',
+                    text: `hi ${res.email}`,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 history.push('/')
-
-
             })
             .catch((err) => {
-                alert('failed')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: err.response.data.message,
+                })
             })
     }
-    return (
+    useEffect(() => {
+        const { email, token } = qs.parse(location.search)
+        if (location.search) {
+            axios.get(`${urlApi}user/verify/?email=${email}&token=${token}`)
+                .then((res) => {
+                    console.log(res);
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Congratulation!`,
+                        text: res.data.messge,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    history.push('/signin')
+                })
+                .catch((err) => {
+                    if(err.response.data.message === 'secretKey is not defined'){
+                        return Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "something went wrong",
+                        })
+                    }
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.response.data.message,
+                    })
+                })
+        }
+    }, [location])
 
+    return (
         <div className={style['container']}>
             <div className={style['container-bg']}>
                 <img src={bgimg} alt="" />
@@ -55,7 +100,7 @@ function Signin() {
                         <Input name="password" setValue={password} type="password" placeholder="write your password" label="Password" onChange={(e) => setPassword(e.target.value)} /><br />
                         <MyButton title="Sign in" color="" size="full" onClick={handleLogin} />
                     </form>
-                    <p className={style['f-password']}>Forgot your password? <Link to="">Reset now</Link></p>
+                    <p className={style['f-password']}>Forgot your password? <Link to="/forgot-password">Reset now</Link></p>
                 </section>
                 <section className={style['box3']}>
                     <div className={style['line1']}><hr /></div>
