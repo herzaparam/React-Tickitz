@@ -1,14 +1,19 @@
 import Axios from 'axios'
+import Swal from 'sweetalert2'
 
-export const getLocation = () => {
-    return (dispatch) => {
-        Axios.get(`${process.env.REACT_APP_API_TICKITZ}location`)
+export const getLocation = (city) =>  (dispatch) => {
+    return new Promise((resolve, reject)=>{
+        Axios.get(`${process.env.REACT_APP_API_TICKITZ}location/?city=${city}`)
             .then((res) => {
-                console.log(res.data.location);
-                const dataMovie = res.data.location
+                const dataMovie = res.data.data
                 dispatch({ type: 'GET_LOCATION', payload: dataMovie })
-            }).catch(() => {
-                alert('cannot get movies ')
             })
-        }
+            .catch((err) => {
+                reject(Swal.fire({
+                    icon: "error",
+                    title: "oops..",
+                    text: "curently can not get cinema ",
+                }))
+            })
+        })
     }

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import {useHistory} from 'react-router-dom'
 import style from './payment.module.css'
 import gpay from '../../assets/image/gpay-icon.png'
 import visa from '../../assets/image/visa-icon.png'
@@ -12,10 +14,47 @@ import warning from '../../assets/image/warning-icon.png'
 import MyNavbar from '../../components/module/navbar'
 import MyFooter from '../../components/module/Footer'
 import MyButton from '../../components/base/Button'
-import {withRouter} from 'react-router-dom'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 
-function index() {
+function PaymentPage() {
+    const urlApi = process.env.REACT_APP_API_TICKITZ
+    const history = useHistory();
+
+    const { user } = useSelector((state => state.userReducer))
+    const { order } = useSelector((state) => state.historyReducer)
+    const [data, setData] = useState({})
+
+    const handlePayment = (e) =>{
+        e.preventDefault()
+        setData({
+            user,
+            order
+        })
+        Swal.fire({
+            icon: "question",
+            title: "are you sure?",
+        }).then((async(result)=>{
+            if (result.isConfirmed) {
+                const res = await axios.post(`${urlApi}/ticket`, data)
+                if(res.request.status === 200){
+                   Swal.fire('Saved!', '', 'success')
+                   history.push("/ticket-result")
+                } else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "oops..",
+                        text: "something whent wrong"
+                    })
+                }
+              } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+              }
+        })
+        
+        )}
+
     return (
         <div>
             <MyNavbar />
@@ -26,23 +65,23 @@ function index() {
                         <div className={`${style.itemInfoCont}`}>
                             <div className={`${style.itemInfo1}`}>
                                 <p>Date & time</p>
-                                <p>Tuesday, 07 July 2020 at 02.20pm</p>
+                                <p>{order.date} at {order.time}</p>
                             </div>
                             <div className={`${style.itemInfo1}`}>
                                 <p>Movie title</p>
-                                <p>Spider-Man:Homecoming</p>
+                                <p>{order.films.title}</p>
                             </div>
                             <div className={`${style.itemInfo1}`}>
                                 <p>Cinema name</p>
-                                <p>CineOne21 Cinema</p>
+                                <p>{order.cinemaName}</p>
                             </div>
                             <div className={`${style.itemInfo1}`}>
                                 <p>Number of tickets</p>
-                                <p>3 Pieces</p>
+                                <p>{order.selectedSeat.length} Pieces</p>
                             </div>
                             <div className={`${style.itemInfo}`}>
                                 <p>Total payment</p>
-                                <p>$30,00</p>
+                                <p>Rp.{order.totalPrice},-</p>
                             </div>
 
                         </div>
@@ -78,19 +117,19 @@ function index() {
                     </section>
                     <div className={`${style.btnflex}`}>
                         <MyButton title="Previous Step" color="white" />
-                        <MyButton title="Pay Your order" />
+                        <MyButton title="Pay Your order" onClick={handlePayment}/>
                     </div>
                 </div>
                 <div className={`${style.contSide}`}>
                     <h4>Personal Info</h4>
                     <div className={`${style.box3}`}>
                         <form action="">
-                            <label for="fname">Full name</label><br />
-                            <input type="text" id="fname" name="fname" placeholder="Jonas El Rodrigues" /><br /><br />
-                            <label for="email">Email</label><br />
-                            <input type="text" id="email" name="email" placeholder="jonasrodri123@gmail.com" /><br /><br />
-                            <label for="pnumber">Phone number</label><br />
-                            <input type="text" id="pnumber" name="pnumber" placeholder="81445687121" />
+                            <label htmlFor="fname">Full name</label><br />
+                            <input type="text" id="fname" name="fname" value={`${user.fname} ${user.lname}`} placeholder="Jonas El Rodrigues" /><br /><br />
+                            <label htmlFor="email">Email</label><br />
+                            <input type="text" id="email" name="email" value={user.email} placeholder="jonasrodri123@gmail.com" /><br /><br />
+                            <label htmlFor="pnumber">Phone number</label><br />
+                            <input type="text" id="pnumber" name="pnumber" value={user.phone_number} />
                         </form>
                         <div className={`${style.warning}`}>
                             <img src={warning} alt="" />
@@ -104,4 +143,4 @@ function index() {
     )
 }
 
-export default withRouter(index)
+export default PaymentPage

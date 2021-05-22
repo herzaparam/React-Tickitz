@@ -9,24 +9,24 @@ export const getMovie = () => {
         dispatch(loadingMovie())
             Axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/all-movies`)
                 .then((res) => {
-                    const dataMovie = res.data.result
+                    const dataMovie = res.data.data
                     dispatch({ type: 'GET_ALL_MOVIE', payload: dataMovie })
-                }).catch(() => {
-                    alert('cannot get movies ')
+                }).catch((err) => {
+                    console.log(err.response);
                 })
         Axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/now-showing`)
             .then((res) => {
-                const dataMovie = res.data.result
+                const dataMovie = res.data.data
                 dispatch({ type: 'GET_NOW_MOVIE', payload: dataMovie })
-            }).catch(() => {
-                alert('cannot get movies ')
+            }).catch((err) => {
+                console.log(err.response);
             })
         Axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/upcoming-movies`)
             .then((res) => {
-                const dataMovie = res.data.result
+                const dataMovie = res.data.data
                 dispatch({ type: 'GET_UP_MOVIE', payload: dataMovie })
-            }).catch(() => {
-                alert('cannot get movies ')
+            }).catch((err) => {
+                console.log(err.response);
             })
     }
 }

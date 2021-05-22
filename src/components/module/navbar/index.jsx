@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import { getUser } from '../../../configs/redux/actions/user'
+import { getMovie } from '../../../configs/redux/actions/movie'
+
 import MyButton from '../../base/Button'
-import { tickitzpurpleimg, searchlogo, defaultimage } from '../../../assets/image'
+import { tickitzpurpleimg, searchlogo } from '../../../assets/image'
 import style from './navbar.module.css'
-import { useState } from 'react'
 
 function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
     let history = useHistory();
-    const urlApi = process.env.REACT_APP_API_TICKITZ
+    const dispatch = useDispatch();
     const urlImg = process.env.REACT_APP_API_IMG
 
     const [searchTerm, setSearchTerm] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [authLogin, setAuthLogin] = useState(isLoggedIn)
+
+    const { user } = useSelector(state => state.userReducer)
+    const { allFilms } = useSelector(state => state.movieReducer)
 
     const handleShowSearch = (e) => {
         e.preventDefault();
@@ -21,12 +27,18 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
         }
         setShowSearch(true)
     }
-    
+
     const handleLogOut = (e) => {
         localStorage.removeItem("token")
         setAuthLogin(false)
         window.location.reload()
     }
+
+
+    useEffect(() => {
+        dispatch(getUser())
+        dispatch(getMovie())
+    }, [])
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -66,7 +78,7 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
                                     <button className="btn btn-outline-light" type="submit" onClick={handleShowSearch}><img src={searchlogo} alt="" /></button>
                                 </div>
                                 <div className={style.dropdownContent}>
-                                    {allFilm.filter((film) => {
+                                    {allFilms.filter((film) => {
                                         if (searchTerm === "") {
                                             return film
                                         } else if (film.title.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -84,11 +96,11 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
                         }
                     </form>
                     <div className="nav-item dropdown">
-                        {!isLoggedIn ?
-                            <MyButton title="Sign Up" onClick={routeSignUp} /> :
+                        {!user ?
+                            <MyButton title="Sign Up" onClick={(e) => history.push("/signup")} /> :
                             <div>
                                 <button className={`nav-link ${style.btnProfile}`} to="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={`${urlImg}${userImage}`} alt="" />
+                                    <img src={`${urlImg}${user.image}`} alt="" />
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><button className="dropdown-item" onClick={() => { history.push("/profile") }}>Profile</button></li>

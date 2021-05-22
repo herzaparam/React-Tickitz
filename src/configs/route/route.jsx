@@ -14,7 +14,7 @@ function MainRouter() {
         <Route path='/signup' component={Signup} />
         <Route path='/forgot-password' component={ForgotPass} />
         <Route path='/moviedetails/:idfilm' component={Moviedetails} />
-        <ProtectedRoute path='/orderpage/:idfilm' component={Orderpage} />
+        <ProtectedRoute path='/orderpage' component={Orderpage} />
         <ProtectedRoute path='/paymentpage' component={Paymentpage} />
         <ProtectedRoute path='/profile' component={Profilepage} />
         <Route path='/allmovies' component={ViewFilm} />

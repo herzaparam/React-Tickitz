@@ -2,7 +2,6 @@ import Axios from 'axios'
 
 export const login = (data) => (dispatch) => {
     return new Promise((resolve, reject) => {
-        console.log(data);
         Axios.post(`${process.env.REACT_APP_API_TICKITZ}user/login`, data)
             .then((res) => {
                 const dataUser = res.data.data[0]

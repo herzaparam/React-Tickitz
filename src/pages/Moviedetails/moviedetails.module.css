@@ -6,6 +6,7 @@
 }
 .flex{
     display: flex;
+    margin: 10px 0;
 }
 .border{
     border: 1px solid black;
@@ -96,6 +97,7 @@ p.desc{
 .card-line{
     padding: 1em ;
 }
+
 .card-img{
     padding-left: 1em;
     padding-top: 1.2em;
@@ -105,6 +107,12 @@ p.desc{
     height: auto;
     object-fit: contain;
 }
+.card-title {
+    padding: 0 5px;
+}
+.card-desc {
+    padding: 0 5px;
+}
 p.card-title{
     font-family: 'Mulish',sans-serif;
     font-style: normal;
@@ -112,6 +120,7 @@ p.card-title{
     font-size: 1.3rem;
     letter-spacing: 0.75px;
     color: #000000;
+    margin: 0;
 
 }
 p.card-desc{
@@ -121,12 +130,9 @@ p.card-desc{
     line-height: 1rem;
     letter-spacing: 0.75px;
     color: #6E7191;
+    margin: 0;
 }
-.card-time{
-    text-decoration: none;
-    color: #4E4B66;
-    letter-spacing: .75px;
-}
+
 .sp-bt{
     justify-content: space-between;
 }
@@ -159,6 +165,22 @@ p.card-desc{
     color: #F7F7FC;
     padding: .8em 3em;
 }
+
+.card-line-1 > button {
+    background: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    color: #4E4B66;
+    letter-spacing: .75px;
+    font-size: 12px;
+}
+button.activeBtn {
+    background-color: #5F2EEA;
+    color: #F7F7FC;
+    border-radius: 8px;
+}
 .card-line > a{
     text-decoration: none;
     font-style: normal;
@@ -177,20 +199,7 @@ p.card-desc{
     color: #14142B;
     text-align: center;
 }
-button#dropdownMenuButton1{
-    color: #4E4B66;
-    background-color: #EFF0F6;
-    border-radius: 6px;
-    font-family: 'Mulish';
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.25px;
-    color: #4E4B66;
-    text-align: center;
-    width: 15em;
-    height: 3em;
-    margin: 2em;
-}
+
 button>img{
     float: left;
     vertical-align: middle;
@@ -207,4 +216,52 @@ button>img{
 .image > img{
     width: 350px;
     object-fit: contain;
+}
+.drop-content {
+    display: none;
+}
+.drop-content-active > ul {
+    list-style: none;
+    padding: 0;
+}
+.drop-content-active {
+    position: absolute;
+    right: 35.5%;
+    width: 12em; 
+    max-width: 12em;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    margin-top: 3em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: rgb(231, 231, 231);
+    z-index: 1;
+    text-align: center;
+}
+.drop-content-active li {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+.drop-content-active li:hover{
+    background-color: grey;
+}
+.flex > select {
+    width: 12em;
+    margin: 0 5px;
+    border: none;
+    background: #EFF0F6;
+    border-radius: 6px;
+    outline: none;
+    position: relative;
+    color: black;
+    height: 3em;
+}
+.flex > input {
+    width: 12em;
+    height: 3em;
+    margin: 0 5px;
+    border: none;
+    background: #EFF0F6;
+    border-radius: 6px;
+    text-align: center;
+    outline: none;
 }

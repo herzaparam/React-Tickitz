@@ -1,8 +1,12 @@
 
-.contFluid>img{
-    height: 500px;
-    width: 700px;
+.order-info > img{
+    height: 50px ;
+    width: 200px ;
     object-fit: contain;
+    margin-left: 3vw;
+}
+.order-info > p {
+    text-align: center;
 }
 .movieselect{
     display: flex;
@@ -16,11 +20,12 @@
 .detailed{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 15px;
 }
 .totaled{
     display: flex;
     justify-content: space-between;
+    padding: 10px 15px;
 }
 .totaled > p {
     font-weight: 700 ;
@@ -29,9 +34,53 @@
     background-color: white;
     border-radius: 10px;
 }
+.cont-fluid > h5 {
+    color: black;
+}
 .movieselect > button{
     background-color: #5f2eea;
     border-radius: 8px;
     border: none;
     color: white;
+}
+.cont-box2 {
+    background-color: white;
+    padding: 3em 0;
+    width: 100%;
+    height: 60vh;
+}
+.cont-box2 > h5 {
+    color: black;
+    text-align: center;
+}
+.grid-box2 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-gap: 10px;
+    width: min-content;
+    padding: 0 6.25em;
+}
+.select-box{
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: grey;
+}
+.select-box-active{
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: #D6D8E7;
+}
+.grid-box2 > h4 {
+    color: black;
+    font-size: 1rem;
+    line-height: 20px;
+    margin-bottom: 0;
+    text-align: center;
+}
+.btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 2em;
 }
