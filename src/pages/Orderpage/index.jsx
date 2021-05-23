@@ -66,7 +66,7 @@ function OrderPage() {
                                 <h4>Movie Selected</h4>
                                 <div className={[style['cont-fluid'], style['movieselect']].join(' ')} >
                                     <h5>{order.films.title}</h5>
-                                    <button onClick={e => this.props.history.push('/allmovies')}>Change movie</button>
+                                    <button onClick={e => history.push('/allmovies')}>Change movie</button>
                                 </div>
                             </div>
                             <div className="box2">

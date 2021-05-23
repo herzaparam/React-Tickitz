@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser } from '../../configs/redux/actions/user'
+
 import MyNavbar from '../../components/module/navbar'
 import Footer from '../../components/module/Footer'
 import style from './profile.module.css'
@@ -8,77 +11,72 @@ import MyButton from '../../components/base/Button'
 import HistoryCard from '../../components/base/HistoryCard'
 import Axios from 'axios'
 import { useHistory } from 'react-router'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 
 function ProfilePage(props) {
     const history = useHistory();
+    const dispatch = useDispatch();
     // const imageRef = useRef(null)
-    const [user, setUser] = useState({
-        user_Id : '',
+    const [data, setData] = useState({
         fname: '',
         lname: '',
         email: '',
-        phone_number: 0,
+        phone_number: '',
         image: null,
-        uploadedImage: null,
-        role: ''
+        password: "",
+        confirmPassword: ""
     })
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    useEffect(() => {
-        Axios.post(`${process.env.REACT_APP_API_TICKITZ}user/profile`, { headers: { Authorization: localStorage.getItem('token') } })
-            .then((res) => {
-                const dataUser = res.data.user
-                setUser({
-                    user_Id: dataUser.user_Id,
-                    fname: dataUser.fname,
-                    lname: dataUser.lname,
-                    email: dataUser.email,
-                    phone_number: dataUser.phone_number,
-                    image: dataUser.image,
-                    role: dataUser.role
-                })
-                setIsLoggedIn(true)
 
-            }).catch((err) => {
-                console.log(err);
-            })
+    const { user } = useSelector(state => state.userReducer)
+    console.log(data);
+    useEffect(() => {
+        if (user.email === "") {
+            dispatch(getUser())
+        }
     }, [])
-    const handleChange = (e) =>{
-        setUser({
-            ...user,
-            [e.target.name] : e.target.value
+    const handleChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
         })
     }
-    const handleChangeImage = (e) =>{
-        setUser({
-            ...user,
+    const handleChangeImage = (e) => {
+        setData({
+            ...data,
             image: e.target.files[0],
         })
     }
 
-    const updateProfile = (e) =>{
+    const updateProfile = (e) => {
         e.preventDefault();
-        console.log(user.image);
         const formData = new FormData();
-        formData.append('fname', user.fname)
-        formData.append('lname', user.lname)
-        formData.append('email', user.email)
-        formData.append('phone_number', user.phone_number)
-        formData.append('image', user.image)
-        Axios.put(`${process.env.REACT_APP_API_TICKITZ}user/profile/${user.user_Id}`, user, { headers: { Authorization: localStorage.getItem('token') }})
-        .then((res)=>{
-            console.log(res);
-            
-        }).catch((err)=>{
-            console.log('gagal');
-        })
+        formData.append('fname', data.fname ? data.fname : user.fname)
+        formData.append('lname', data.lname ? data.lname : user.lname)
+        formData.append('email', data.email ? data.email : user.email)
+        formData.append('phone_number', data.phone_number ? data.phone_number : user.phone_number)
+        formData.append('image', data.image)
+        Axios.put(`${process.env.REACT_APP_API_TICKITZ}user/update-profile`, formData, { headers: { Authorization: localStorage.getItem('token') } })
+            .then((res) => {
+                Swal.fire(
+                    'Good job!',
+                    'update profile success!',
+                    'success'
+                  )
+            }).catch((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
+            })
 
     }
     return (
         <div>
-            <MyNavbar routeSignUp={() => history.push('/signup')} isLoggedIn={isLoggedIn} userImage={user.image} />
+            <MyNavbar />
             <div className={[['container-fluid'], ['bg-light']].join(' ')}>
                 <div className={['container']}>
                     <div className={['row']}>
@@ -88,7 +86,8 @@ function ProfilePage(props) {
                                     <p>Info</p>
                                 </div>
                                 <div className={style.bioProfile}>
-                                    <img src={user.image === null || user.image === "" ? defaultimage : user.image} alt="" />
+                                    <img src={`${process.env.REACT_APP_API_IMG}${user.image}`} alt="" />
+                                    <input name="image" type="file" onChange={handleChangeImage}></input>
                                     <h5>{user.fname} {user.lname}</h5>
                                     <p>{user.role !== 'admin' ? 'user' : 'admin'}</p>
                                 </div>
@@ -113,11 +112,11 @@ function ProfilePage(props) {
                                             <p>Details Information</p><hr />
                                         </div>
                                         <div className={style['grid-2']}>
-                                            <Input label="First Name" setValue={user.fname} name="fname" onChange={e=>handleChange(e)}></Input>
-                                            <Input label="Last Name" setValue={user.lname} name="lname" onChange={e=>handleChange(e)}></Input>
-                                            <Input label="email" setValue={user.email} name="email" onChange={e=>handleChange(e)}></Input>
-                                            <Input label="phone number" setValue={user.phone_number} name="phone_number" onChange={e=>handleChange(e)}></Input>
-                                            <input name="image" type="file" onChange={handleChangeImage}></input>
+                                            <Input label="First Name" placeholder={user.fname} name="fname" onChange={e => handleChange(e)}></Input>
+                                            <Input label="Last Name" placeholder={user.lname} name="lname" onChange={e => handleChange(e)}></Input>
+                                            <Input label="email" placeholder={user.email} name="email" onChange={e => handleChange(e)}></Input>
+                                            <Input label="phone number" placeholder={user.phone_number} name="phone_number" onChange={e => handleChange(e)}></Input>
+
                                         </div>
                                         <div>
                                             <p>Acount and Privacy</p><hr />
@@ -126,7 +125,7 @@ function ProfilePage(props) {
                                             <Input label="password"></Input>
                                             <Input label="confirm password"></Input>
                                         </div>
-                                        <MyButton title="update"  onClick={updateProfile}/>
+                                        <MyButton title="update" onClick={updateProfile} />
                                     </div>
                                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         {/* {this.state.result.map((item) =>

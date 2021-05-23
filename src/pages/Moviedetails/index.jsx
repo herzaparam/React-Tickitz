@@ -39,7 +39,7 @@ export class Moviedetails extends Component {
 
     componentDidMount() {
         this.props.getUser()
-
+        
         if (this.state.city !== undefined) {
             this.props.getLocation(this.state.city)
         }

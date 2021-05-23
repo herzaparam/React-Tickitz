@@ -4,15 +4,16 @@ import style from './mycard.module.css'
 
 export class MyCard extends Component {
 
-    
+
 
     render() {
+
         return (
             <div className={style['card']} >
                 <img src={`${this.props.img}`} alt="tes" />
-                <h5>{this.props.title}</h5>
+                <h5>{this.props.title.length > 13 ? this.props.title.substring(0, 13) + ' . . .' : this.props.title}</h5>
                 <p>{this.props.genre}</p>
-                <MyButton title="details" size="full" onClick={this.props.routeChange} color=""/>
+                <MyButton title="details" size="full" onClick={this.props.routeChange} color="" />
             </div>
         )
     }

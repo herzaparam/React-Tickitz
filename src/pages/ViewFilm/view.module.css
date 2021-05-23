@@ -15,7 +15,12 @@
     margin: auto;
 }
 .card-title{
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.15px;
+    color: #14142B;
 }
 .card-text{
     font-size: .9rem;

@@ -7,8 +7,10 @@ import { getMovie } from '../../../configs/redux/actions/movie'
 import MyButton from '../../base/Button'
 import { tickitzpurpleimg, searchlogo } from '../../../assets/image'
 import style from './navbar.module.css'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
-function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
+function MyNavbar({ isLoggedIn }) {
     let history = useHistory();
     const dispatch = useDispatch();
     const urlImg = process.env.REACT_APP_API_IMG
@@ -16,9 +18,10 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [authLogin, setAuthLogin] = useState(isLoggedIn)
+    const [allFilms, setAllfilms] = useState([])
 
     const { user } = useSelector(state => state.userReducer)
-    const { allFilms } = useSelector(state => state.movieReducer)
+    // const { allFilms } = useSelector(state => state.movieReducer)
 
     const handleShowSearch = (e) => {
         e.preventDefault();
@@ -35,11 +38,27 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
     }
 
     useEffect(() => {
-        if(user.email === ""){
+        if (user.email === "") {
             dispatch(getUser())
         }
         // dispatch(getMovie())
+
     }, [])
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/all-movies/?page=1&perPage=5&keyword=${searchTerm}`)
+            .then((res) => {
+                setAllfilms(res.data.data)
+            })
+            .catch((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            })
+    }, [searchTerm])
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -97,7 +116,7 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
                         }
                     </form>
                     <div className="nav-item dropdown">
-                        {user.email === ""  ?
+                        {user.email === "" ?
                             <MyButton title="Sign Up" onClick={(e) => history.push("/signup")} /> :
                             <div>
                                 <button className={`nav-link ${style.btnProfile}`} to="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
