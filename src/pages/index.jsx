@@ -7,7 +7,7 @@ import Paymentpage from '../pages/Paymentpage'
 import Profilepage from '../pages/Profilepage'
 import ViewFilm from '../pages/ViewFilm'
 import ForgotPass from '../pages/auth/Forgotpass'
-
+import TicketResult from '../pages/Ticket'
 
 export {
     Home,
@@ -18,5 +18,6 @@ export {
     Paymentpage,
     Profilepage,
     ViewFilm,
-    ForgotPass
+    ForgotPass,
+    TicketResult
 }

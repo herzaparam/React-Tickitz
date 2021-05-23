@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Home, Signin, Signup, Moviedetails, Orderpage, Paymentpage, Profilepage, ViewFilm, ForgotPass } from '../../pages'
+import { Home, Signin, Signup, Moviedetails, Orderpage, Paymentpage, Profilepage, ViewFilm, ForgotPass, TicketResult } from '../../pages'
 import ProtectedRoute from './module/protectedRoute'
 
 
@@ -16,6 +16,7 @@ function MainRouter() {
         <Route path='/moviedetails/:idfilm' component={Moviedetails} />
         <ProtectedRoute path='/orderpage' component={Orderpage} />
         <ProtectedRoute path='/paymentpage' component={Paymentpage} />
+        <ProtectedRoute path='/ticket-result/:order' component={TicketResult} />
         <ProtectedRoute path='/profile' component={Profilepage} />
         <Route path='/allmovies' component={ViewFilm} />
       </Switch>

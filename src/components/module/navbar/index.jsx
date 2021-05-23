@@ -34,10 +34,11 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
         window.location.reload()
     }
 
-
     useEffect(() => {
-        dispatch(getUser())
-        dispatch(getMovie())
+        if(user.email === ""){
+            dispatch(getUser())
+        }
+        // dispatch(getMovie())
     }, [])
 
     return (
@@ -96,7 +97,7 @@ function MyNavbar({ routeSignUp, isLoggedIn, allFilm, userImage }) {
                         }
                     </form>
                     <div className="nav-item dropdown">
-                        {!user ?
+                        {user.email === ""  ?
                             <MyButton title="Sign Up" onClick={(e) => history.push("/signup")} /> :
                             <div>
                                 <button className={`nav-link ${style.btnProfile}`} to="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">

@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import MyNavbar from '../../components/module/navbar'
 import style from './orderpage.module.css'
-import seat from '../../assets/image/selectseat.PNG'
 import MyButton from '../../components/base/Button'
 import MyFooter from '../../components/module/Footer'
-import { connect } from 'react-redux'
-import axios from 'axios'
+
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router'
 
@@ -34,13 +32,13 @@ function OrderPage() {
 
 
     const handleSeat = (box) => {
-
         if (selectedSeat.length < 4) {
             setSelectedSeat([...selectedSeat, box])
             setData({
-                selectedSeat: selectedSeat,
+                selectedSeat: [...data.selectedSeat, box],
                 totalPrice: selectedSeat.length * order.price
             })
+            
         } else {
             Swal.fire({
                 icon: "info",
@@ -52,10 +50,7 @@ function OrderPage() {
     }
 
     const handleCheckOut = () => {
-
-
         dispatch({ type: "UPDATE_ORDER", payload: data })
-
         history.push("/paymentpage")
     }
 

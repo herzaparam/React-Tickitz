@@ -8,6 +8,8 @@ import searchlogo from './searchlogo.png'
 import hiflix from './hiflix.png'
 import cineone from './cineone21.png'
 import ebuid from './ebuid.png'
+import downloadicon from './download icon.png'
+import printericon from './printer icon.png'
 
 export{
     bgimg,
@@ -19,5 +21,7 @@ export{
     searchlogo,
     ebuid,
     hiflix,
-    cineone
+    cineone,
+    downloadicon,
+    printericon
 }

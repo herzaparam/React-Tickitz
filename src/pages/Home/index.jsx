@@ -28,7 +28,7 @@ export class Home extends Component {
     render() {
         return (
             <div>
-                <MyNavbar routeSignUp={() => this.routeChangeSignUp()} isLoggedIn={this.props.user.isLoggedIn} allFilm={this.props.allFilms} userImage={this.props.user.user.image} />
+                <MyNavbar />
                 <div className={style.sectone}>
                     <h1 className={style['headingstyle']}><span className={style.spanstyle}>Nearest Cinema, Newest Movie<br /></span> Find out now!</h1>
                     <div className={style.contimg}>

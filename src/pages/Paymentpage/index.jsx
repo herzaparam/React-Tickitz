@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import style from './payment.module.css'
 import gpay from '../../assets/image/gpay-icon.png'
 import visa from '../../assets/image/visa-icon.png'
@@ -24,36 +24,33 @@ function PaymentPage() {
 
     const { user } = useSelector((state => state.userReducer))
     const { order } = useSelector((state) => state.historyReducer)
-    const [data, setData] = useState({})
 
-    const handlePayment = (e) =>{
+    const handlePayment = (e) => {
         e.preventDefault()
-        setData({
-            user,
-            order
-        })
+       
         Swal.fire({
             icon: "question",
             title: "are you sure?",
-        }).then((async(result)=>{
+        }).then((async (result) => {
             if (result.isConfirmed) {
-                const res = await axios.post(`${urlApi}/ticket`, data)
-                if(res.request.status === 200){
-                   Swal.fire('Saved!', '', 'success')
-                   history.push("/ticket-result")
-                } else{
+                const res = await axios.post(`${urlApi}ticket`, { user: user, order: order })
+                if (res.request.status === 200) {
+                    Swal.fire('Saved!', '', 'success')
+                    history.push(`/ticket-result/${res.data.data[0].order_Id}`)
+                } else {
                     Swal.fire({
                         icon: "error",
                         title: "oops..",
                         text: "something whent wrong"
                     })
                 }
-              } else if (result.isDenied) {
+            } else if (result.isDenied) {
                 Swal.fire('Changes are not saved', '', 'info')
-              }
+            }
         })
-        
-        )}
+
+        )
+    }
 
     return (
         <div>
@@ -117,7 +114,7 @@ function PaymentPage() {
                     </section>
                     <div className={`${style.btnflex}`}>
                         <MyButton title="Previous Step" color="white" />
-                        <MyButton title="Pay Your order" onClick={handlePayment}/>
+                        <MyButton title="Pay Your order" onClick={handlePayment} />
                     </div>
                 </div>
                 <div className={`${style.contSide}`}>
