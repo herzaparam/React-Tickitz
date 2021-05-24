@@ -1,4 +1,3 @@
-
 <div align="center">
   <img width="230" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/Tickitz%201.png" alt="next.js logo">
  </div> 
