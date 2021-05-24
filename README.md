@@ -1,7 +1,15 @@
-<p align="center">
-  <img width="150" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/Tickitz%201.png" alt="Tickitz logo">
-</p>
-<h1 align="center">Tickitz</h1>
+
+<div align="center">
+  <img width="230" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/Tickitz%201.png" alt="next.js logo">
+ </div> 
+<hr>
+ <div align="center">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/reactlogo.png" alt="react js">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/nodejs.png" alt="node js">
+  <img width="100" src="https://github.com/herzaparam/zwallet-arka/blob/main/public/expresslogo.png" alt="express js">
+</div>
+<hr>
+<br>
 
 Website for booking and payment ticket films where user can find which film are showing at the moment and doesn't. Developed with react, express, and integrated to mysql databases. There are many feature in website such as authentication, user activation, edit profile, admin role, insert edit delete movie. User need to login to book ticket film and do payment with specific payment method that user like.
 
