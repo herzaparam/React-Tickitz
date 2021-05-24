@@ -39,7 +39,7 @@ function TicketResult() {
                 })
             })
     }, [])
-    console.log(ticket);
+   
     return (
         <div>
             <MyNavbar />
@@ -89,7 +89,7 @@ function TicketResult() {
                             </div>
                             <div className={style["ticket-bottom-right"]}>
                                 <h5>Movie</h5>
-                                <p>{ticket.movieTitle}</p>
+                                <p>{ticket.movieTitle.length > 10 ? ticket.movieTitle.substring(0,10)+"..." : ticket.movieTitle}</p>
                                 <div className={style["ticket-bottom-right-grid"]}>
                                     <div className={style["grid-content"]}>
                                         <h5>Date </h5>

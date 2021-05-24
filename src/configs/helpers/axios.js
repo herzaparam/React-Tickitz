@@ -5,7 +5,7 @@ const Swal = require("sweetalert2");
 axiosApiInstance.interceptors.request.use(
   async (config) => {
     config.headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `${localStorage.getItem("token")}`,
     };
     return config;
   },

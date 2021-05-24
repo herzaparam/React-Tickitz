@@ -45,19 +45,25 @@ function MyNavbar({ isLoggedIn }) {
 
     }, [])
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/all-movies/?page=1&perPage=5&keyword=${searchTerm}`)
-            .then((res) => {
-                setAllfilms(res.data.data)
-            })
-            .catch((err) => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    timer: 1000,
-                    showConfirmButton: false
+        if (searchTerm !== "") {
+            axios.get(`${process.env.REACT_APP_API_TICKITZ}movies/all-movies/?page=1&perPage=5&keyword=${searchTerm}`)
+                .then((res) => {
+                    setAllfilms(res.data.data)
                 })
-            })
+                .catch((err) => {
+                    if(err.response.status === 404 ){
+                        return allFilms
+                    }
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        timer: 1000,
+                        showConfirmButton: false
+                    })
+                })
+        }
+
     }, [searchTerm])
 
     return (
