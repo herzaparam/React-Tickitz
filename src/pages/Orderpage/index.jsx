@@ -8,6 +8,7 @@ import MyFooter from '../../components/module/Footer'
 
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router'
+import axios from 'axios'
 
 function OrderPage() {
     const dispatch = useDispatch();
@@ -36,9 +37,9 @@ function OrderPage() {
             setSelectedSeat([...selectedSeat, box])
             setData({
                 selectedSeat: [...data.selectedSeat, box],
-                totalPrice: selectedSeat.length * order.price
+                totalPrice: (data.selectedSeat.length + 1) * order.price
             })
-            
+
         } else {
             Swal.fire({
                 icon: "info",
@@ -48,12 +49,31 @@ function OrderPage() {
             })
         }
     }
-
+    
     const handleCheckOut = () => {
         dispatch({ type: "UPDATE_ORDER", payload: data })
         history.push("/paymentpage")
     }
 
+    useEffect(() => {
+
+        const data = {
+            cinemaID: order.btnId,
+            movieID: order.films.movie_Id,
+            date: order.date,
+            time: order.time,
+        }
+        axios.post(`${process.env.REACT_APP_API_TICKITZ}ticket/get-schedule`, data)
+            .then((res) => {
+                // console.log(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+
+
+    }, [])
 
     return (
         <div>

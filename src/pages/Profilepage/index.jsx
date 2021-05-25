@@ -98,8 +98,8 @@ function ProfilePage(props) {
     return (
         <div>
             <MyNavbar />
-            <div className={[['container-fluid'], ['bg-light']].join(' ')}>
-                <div className={['container']}>
+            <div className={[['container-fluid'], ['bg-light'], style["cnt"]].join(' ')}>
+                <div className={[['container'], style["cnt-1"]].join(" ")}>
                     <div className={['row']}>
                         <div className={['col-sm-4']}>
                             <div className={style['column-1']}>
@@ -119,7 +119,7 @@ function ProfilePage(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={['col-sm-8']}>
+                        <div className={[['col-sm-8'], style["col-prof"]].join(" ")}>
                             <div className={style['column-1']}>
                                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                                     <li className="nav-item" role="presentation">
@@ -141,8 +141,9 @@ function ProfilePage(props) {
                                             <Input label="phone number" placeholder={user.phone_number} name="phone_number" onChange={e => handleChange(e)}></Input>
 
                                         </div>
-                                        <div>
-                                            <p>Acount and Privacy</p><hr />
+                                        <div className={style["acc-privacy"]}>
+                                            <p>Acount and Privacy</p>
+                                            <hr />
                                         </div>
                                         <div className={style['privacy']}>
                                             <Input label="password"></Input>

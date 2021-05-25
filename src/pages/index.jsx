@@ -8,6 +8,7 @@ import Profilepage from '../pages/Profilepage'
 import ViewFilm from '../pages/ViewFilm'
 import ForgotPass from '../pages/auth/Forgotpass'
 import TicketResult from '../pages/Ticket'
+import AdminPage from '../pages/AdminPage'
 
 export {
     Home,
@@ -19,5 +20,6 @@ export {
     Profilepage,
     ViewFilm,
     ForgotPass,
-    TicketResult
+    TicketResult,
+    AdminPage
 }

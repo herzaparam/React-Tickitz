@@ -76,13 +76,13 @@ function MyNavbar({ isLoggedIn }) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/moviedetails/1">Movies</Link>
+                            <Link className="nav-link active" aria-current="page" to="/allmovies">Movies</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="#">Cinemas</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/orderpage">Buy Ticket</Link>
+                            <Link className="nav-link" to="">Buy Ticket</Link>
                         </li>
 
                     </ul>

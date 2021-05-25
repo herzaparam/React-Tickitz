@@ -14,7 +14,7 @@ function ViewFilm() {
     const history = useHistory();
 
     // const { allFilms } = useSelector(state => state.movieReducer)
-    const { user, isLoggedIn } = useSelector(state => state.userReducer)
+    const { user } = useSelector(state => state.userReducer)
     const { loading } = useSelector(state => state.movieReducer)
 
     const [currentPage, setCurrentPage] = useState(1)

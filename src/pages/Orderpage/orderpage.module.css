@@ -10,8 +10,9 @@
 }
 .movieselect{
     display: flex;
-    height: 3em;
+    height: 4em;
     justify-content: space-between;
+    padding: 10px;
 }
 .movieselect > h5 {
     font-weight: 700;
