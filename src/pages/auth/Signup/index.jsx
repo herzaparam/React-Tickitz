@@ -69,7 +69,7 @@ class Signup extends Component {
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: 'sign up failed',
                     text: err.response.data.message,
                 })
             })
@@ -77,9 +77,6 @@ class Signup extends Component {
 
     }
 
-    componentDidMount(){
-
-    }
 
     
     render() {
