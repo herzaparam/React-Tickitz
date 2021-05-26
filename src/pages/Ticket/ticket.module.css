@@ -8,7 +8,7 @@
     background: #F5F6F8;
     border-radius: 8px;
     width: 100%;
-    height: 85vh;
+    height: min-content;
     padding: 2em 7em;
 }
 .box-ticket > h3 {
@@ -16,7 +16,7 @@
 }
 .ticket {
     width: 100%;
-    height: 70%;
+    height: min-content;
 }
 .ticket-top {
     display: flex;
@@ -27,7 +27,7 @@
     border-top-left-radius: 16px ;
 }
 .ticket-top-right {
-    flex-basis: 30%;
+    flex-basis: 35%;
     display: flex;
     justify-content: center;
     
@@ -35,7 +35,7 @@
 .ticket-top-left {
     display: flex;
     align-items: center;
-    flex-basis: 70%;
+    flex-basis: 65%;
     justify-content: space-between;
     border-right: 1px dashed #DEDEDE;
     padding: 0 2em;
@@ -55,7 +55,7 @@
     display: flex;
 }
 .ticket-bottom-left {
-    flex-basis: 70%;
+    flex-basis: 65%;
     padding-left: 2em;
     padding-top: 2em;
     border-right: 1px dashed #DEDEDE;
@@ -64,7 +64,7 @@
     display: grid;
     grid-template-columns: auto auto auto;
 }
-.grid-content > h5, .ticket-bottom-left > h5, .ticket-bottom-right > h5 {
+.grid-content > h5, .ticket-bottom-left > h5, .tbr-left > h5 {
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.75px;
@@ -80,8 +80,10 @@
     margin-bottom: 0;
 }
 .ticket-bottom-right {
-    flex-basis: 30%;
+    flex-basis: 35%;
     padding-left: 1em;
+    display: flex;
+    flex-wrap: nowrap;
 }
 .ticket-bottom-right-grid {
     display: grid;
@@ -103,4 +105,12 @@
     letter-spacing: 0.75px;
     color: #4E4B66;
     margin: 1em;
+}
+.tbr-right {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0;
+}
+.tbr-right > img {
+    margin-left: 15px;
 }

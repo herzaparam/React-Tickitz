@@ -113,3 +113,22 @@
     justify-content: space-between;
     padding: 1em 2em;
 }
+@media (max-width: 767.98px) { 
+    .cont {
+        padding: 2vw 3%;
+    }
+    .nice > input[type=text] {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+@media (max-width: 575.98px) { 
+    .cont {
+        flex-direction: column;
+    }
+}
+@media (max-width: 375.98px) { 
+    .gridPay {
+        grid-template-columns: 1fr 1fr;
+    }
+}

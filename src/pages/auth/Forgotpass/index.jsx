@@ -3,7 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import qs from 'query-string'
 
 import style from './forgotpass.module.css'
-import { bgimg, logotickitz } from '../../../assets/image/'
+import { bgimg, logotickitz } from '../../../assets/image'
 import MyButton from '../../../components/base/Button'
 import Swal from 'sweetalert2'
 import axios from 'axios'
@@ -84,7 +84,7 @@ function ForgotPass() {
                         <input name="password" type="password" onChange={handleChange} />
                         <label htmlFor="" className={style["form-label"]}>new password confirmation</label>
                         <input name="confirmPassword" type="password" onChange={handleChange} />
-                        <MyButton title="Activate Now" size="full" onClick={handleReset} />
+                        <MyButton title="Reset" size="full" onClick={handleReset} />
                     </>
                     :
                     <>
@@ -95,7 +95,7 @@ function ForgotPass() {
                         <form action="">
                             <label htmlFor="" className={style["form-label"]}>Your Email</label>
                             <input type="text" onChange={(e) => setEmail(e.target.value)} />
-                            <MyButton title="Activate Now" size="full" onClick={handleSubmit} />
+                            <MyButton title="Reset" size="full" onClick={handleSubmit} />
                         </form>
                     </>
                 }

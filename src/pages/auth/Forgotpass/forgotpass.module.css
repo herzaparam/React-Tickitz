@@ -56,8 +56,9 @@
     flex-direction: column;
     height: auto;
     width: 45%;
+    height: 60vh;
     padding: 0 5%;
-    justify-content: center;
+    justify-content: space-around;
 }
 /* h2,h3,h4 */
 h2, h3, h4, h5{
@@ -81,7 +82,7 @@ h2{
     margin: 0;
 }
 h4{
-    font-size: 1.5vw;
+    font-size: 2rem;
     letter-spacing: 0.007em;
     color: #AAAAAA;
     margin: 0;
@@ -110,6 +111,7 @@ h5 {
     font-size: 1.5rem;
     font-weight: 500;
 }
+
 
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
@@ -151,5 +153,8 @@ h5 {
     .box0 {
         display: block;
 
+    }
+    .container-form-title > h4 {
+        font-size: 1.5rem;
     }
 }

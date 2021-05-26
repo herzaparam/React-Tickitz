@@ -19,6 +19,15 @@
     opacity: .5;
 }
 
+@media (max-width: 767.98px) { 
+    .label {
+        margin-bottom: 0;
+    }
+    .input {
+        margin-top: 0;
+    }
+}
+
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .input::placeholder{

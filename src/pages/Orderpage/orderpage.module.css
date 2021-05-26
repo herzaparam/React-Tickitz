@@ -48,7 +48,7 @@
     background-color: white;
     padding: 3em 0;
     width: 100%;
-    height: 60vh;
+    height: min-content;
 }
 .cont-box2 > h5 {
     color: black;
@@ -58,20 +58,31 @@
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
     grid-gap: 10px;
-    width: min-content;
+    width: 100%;
     padding: 0 6.25em;
+}
+.grid-box2 > button {
+    border: none;
+    outline: none;
 }
 .select-box{
     width: 20px;
     height: 20px;
     border-radius: 6px;
-    background-color: grey;
+    background-color: #D6D8E7;
+   
 }
 .select-box-active{
     width: 20px;
     height: 20px;
     border-radius: 6px;
-    background-color: #D6D8E7;
+    background-color: #5F2EEA;
+}
+.select-box-sold{
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: #6E7191;
 }
 .grid-box2 > h4 {
     color: black;
@@ -84,4 +95,75 @@
     display: flex;
     justify-content: space-between;
     padding: 2em 2em;
+}
+.seating-key {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    padding: 0 4em;
+}
+.seating-key > h4 {
+    margin-bottom: 0;
+}
+.cont-box2 > h2 {
+    margin-top: 2em;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 0.75px;
+    color: #000000;
+    margin-left: 5em;
+    margin-bottom: 0;
+}
+@media (max-width: 991.98px) { 
+    .grid-box2 {
+        padding: 0 2em;
+    }
+    .cnt-1 {
+        max-width: 90%;
+    }
+    .movieselect{
+        height: min-content;
+    }
+}
+@media (max-width: 767.98px) { 
+    .grid-box2 {
+        padding:  0 1em;
+    }
+    .cnt-1 {
+        max-width: 100%;
+    }
+    .order-info > img {
+        width: 150px;
+    }
+    .cont-box2 > h2 {
+        margin-left: 3em;
+    }
+    .seating-key {
+        padding: 2em;
+    }
+   
+}
+@media (max-width: 375.98px) { 
+    .select-box, .select-box-active, .select-box-sold {
+        width: 10px;
+        height: 100%;
+        border-radius: 4px;
+    }
+    .grid-box2 > h4 {
+        font-size: 12px;
+        line-height: 12px;
+    }
+    .grid-box2 {
+        grid-gap: 5px;
+    }
+    .box1 > h4, .box2 > h4 {
+        font-size: 1rem;
+    }
+    .cont-fluid > h5 {
+        font-size: .8rem;
+    }
+    .movieselect > button {
+        font-size: .8rem;
+    }
 }

@@ -232,6 +232,45 @@ hr{
     
 }
 
+@media (max-width: 991.98px) { 
+    .box3 {
+        padding: 0;
+    }
+    .container-bg-content  {
+        width: 70%;
+    }
+    .container-bg-content > img{
+        width: 18em;
+    }
+}
+@media (max-width: 767.98px) { 
+    .container-bg-content {
+        width: 80%;
+        margin-left: 2em;
+    }
+    .container-bg-content > h2 {
+        font-size: 1.5rem;
+    }
+    .container-bg-content > h5 {
+        font-size: 1rem;
+    }
+    .container-bg-content > img {
+        width: 15em;
+    }
+    .box1 > h3, .box1 > h4 {
+        margin-bottom: 0;
+    }
+    .label {
+        margin: 0;
+    }
+    input[type=text], input[type=password] {
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .f-password {
+        margin-top: 15px;
+    }
+}
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .container-form{

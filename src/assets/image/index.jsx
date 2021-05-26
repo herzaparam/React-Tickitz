@@ -10,6 +10,7 @@ import cineone from './cineone21.png'
 import ebuid from './ebuid.png'
 import downloadicon from './download icon.png'
 import printericon from './printer icon.png'
+import barcode from './barcode.png'
 
 export{
     bgimg,
@@ -23,5 +24,6 @@ export{
     hiflix,
     cineone,
     downloadicon,
-    printericon
+    printericon,
+    barcode
 }

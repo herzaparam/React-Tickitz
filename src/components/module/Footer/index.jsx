@@ -12,7 +12,7 @@ import style from './footer.module.css'
 
 function MyFooter() {
     return (
-        <Container fluid >
+        <Container fluid style={{padding: '2em 0'}}>
             <Row style={{ padding: '0 2em' }} className={style['grid-2']}>
                 <Col  className={style.sect}>
                     <img src={tickitz} alt="" />

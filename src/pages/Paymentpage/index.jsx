@@ -33,6 +33,7 @@ function PaymentPage() {
             title: "are you sure?",
         }).then((async (result) => {
             if (result.isConfirmed) {
+                console.log(user, order);
                 const res = await axios.post(`${urlApi}ticket`, { user: user, order: order })
                 if (res.request.status === 200) {
                     Swal.fire('Saved!', '', 'success')
@@ -120,7 +121,7 @@ function PaymentPage() {
                 <div className={`${style.contSide}`}>
                     <h4>Personal Info</h4>
                     <div className={`${style.box3}`}>
-                        <form action="">
+                        <form action="" className={style["nice"]}>
                             <label htmlFor="fname">Full name</label><br />
                             <input type="text" id="fname" name="fname" value={`${user.fname} ${user.lname}`} placeholder="Jonas El Rodrigues" /><br /><br />
                             <label htmlFor="email">Email</label><br />

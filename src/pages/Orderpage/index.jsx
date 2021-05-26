@@ -22,6 +22,7 @@ function OrderPage() {
         totalPrice: 0,
     })
 
+    const [soldSeat, setsoldSeat] = useState([])
     const [selectedSeat, setSelectedSeat] = useState([])
     const [A, setA] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"])
     const [B, setB] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"])
@@ -49,14 +50,13 @@ function OrderPage() {
             })
         }
     }
-    
+
     const handleCheckOut = () => {
         dispatch({ type: "UPDATE_ORDER", payload: data })
         history.push("/paymentpage")
     }
 
     useEffect(() => {
-
         const data = {
             cinemaID: order.btnId,
             movieID: order.films.movie_Id,
@@ -65,10 +65,23 @@ function OrderPage() {
         }
         axios.post(`${process.env.REACT_APP_API_TICKITZ}ticket/get-schedule`, data)
             .then((res) => {
-                // console.log(res.data.data);
+                if (res.data.data.length > 1) {
+                    let anSeat = []
+                    const newSoldSeat = res.data.data.map((item) => {
+                        return {
+                            seat: JSON.parse(item.seat)
+                        }
+                    })
+                    for (let i = 0; i < newSoldSeat.length; i++) {
+                        anSeat = anSeat.concat(newSoldSeat[i].seat)
+                    }
+                    return setsoldSeat(anSeat)
+                } else if (res.data.data.length = 1) {
+                    return setsoldSeat(res.data.data[0].seat)
+                }
             })
             .catch((err) => {
-                console.log(err);
+                return soldSeat
             })
 
 
@@ -79,17 +92,17 @@ function OrderPage() {
         <div>
             <MyNavbar />
             <div className="container-fluid bg-light">
-                <div className="container">
+                <div className={[style["cnt-1"],["container"]].join(" ")}>
                     <div className="row">
                         <div className="col-sm-8">
-                            <div className="box1" style={{ margin: '2em 0' }}>
+                            <div className={style["box1"]} style={{ margin: '2em 0' }}>
                                 <h4>Movie Selected</h4>
                                 <div className={[style['cont-fluid'], style['movieselect']].join(' ')} >
                                     <h5>{order.films.title}</h5>
                                     <button onClick={e => history.push('/allmovies')}>Change movie</button>
                                 </div>
                             </div>
-                            <div className="box2">
+                            <div className={style["box2"]}>
                                 <h4>Choose Your seat</h4>
                                 <div className={style['contFluid']} >
                                     <div className={style["cont-box2"]}>
@@ -97,31 +110,31 @@ function OrderPage() {
                                         <div className={style["grid-box2"]}>
                                             <h4>A</h4>
                                             {A.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`A${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("A" + box)}></div>
+                                                return <button className={soldSeat.includes(`A${box}`) ? style["select-box-sold"] : selectedSeat.includes(`A${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("A" + box)} disabled={soldSeat.includes(`A${box}`) ? true : false}></button>
                                             })}
                                             <h4>B</h4>
                                             {B.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`B${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("B" + box)}></div>
+                                                return <button className={soldSeat.includes(`B${box}`) ? style["select-box-sold"] : selectedSeat.includes(`B${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("B" + box)} disabled={soldSeat.includes(`B${box}`) ? true : false}></button>
                                             })}
                                             <h4>C</h4>
                                             {C.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`C${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("C" + box)}></div>
+                                                return <button className={soldSeat.includes(`C${box}`) ? style["select-box-sold"] : selectedSeat.includes(`C${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("C" + box)} disabled={soldSeat.includes(`C${box}`) ? true : false}></button>
                                             })}
                                             <h4>D</h4>
                                             {D.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`D${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("D" + box)}></div>
+                                                return <button className={soldSeat.includes(`D${box}`) ? style["select-box-sold"] : selectedSeat.includes(`D${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("D" + box)} disabled={soldSeat.includes(`D${box}`) ? true : false}></button>
                                             })}
                                             <h4>E</h4>
                                             {E.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`E${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("E" + box)}></div>
+                                                return <button className={soldSeat.includes(`E${box}`) ? style["select-box-sold"] : selectedSeat.includes(`E${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("E" + box)} disabled={soldSeat.includes(`E${box}`) ? true : false}></button>
                                             })}
                                             <h4>F</h4>
                                             {F.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`F${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("F" + box)}></div>
+                                                return <button className={soldSeat.includes(`F${box}`) ? style["select-box-sold"] : selectedSeat.includes(`F${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("F" + box)} disabled={soldSeat.includes(`F${box}`) ? true : false}></button>
                                             })}
                                             <h4>G</h4>
                                             {G.map((box, index) => {
-                                                return <div className={selectedSeat.includes(`G${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("G" + box)}></div>
+                                                return <button className={soldSeat.includes(`G${box}`) ? style["select-box-sold"] : selectedSeat.includes(`G${box}`) ? style["select-box-active"] : style["select-box"]} key={index} onClick={(e) => handleSeat("G" + box)} disabled={soldSeat.includes(`G${box}`) ? true : false}></button>
                                             })}
                                             <h4></h4>
                                             <h4>1</h4>
@@ -139,11 +152,20 @@ function OrderPage() {
                                             <h4>13</h4>
                                             <h4>14</h4>
                                         </div>
+                                        <h2>Seating Key</h2>
+                                        <div className={style["seating-key"]}>
+                                            <div className={style["select-box"]}></div>
+                                            <h4>Available</h4>
+                                            <div className={style["select-box-active"]}></div>
+                                            <h4>Selected</h4>
+                                            <div className={style["select-box-sold"]}></div>
+                                            <h4>Sold</h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div className={style["btn"]}>
-                                <MyButton title="Change your movie" color="white" />
+                                <MyButton title="Change movie" color="white" />
                                 <MyButton title="checkout Now" onClick={handleCheckOut} />
                             </div>
                         </div>
@@ -155,7 +177,7 @@ function OrderPage() {
                                     <p>CineOne21 Cinema</p>
                                     <div className={[["detail-order"], style['detailed']].join(' ')}>
                                         <p className="criteria">Movie selected</p>
-                                        <p className="detail">{order.films.title}</p>
+                                        <p className="detail">{order.films.title.length > 20 ? order.films.title.substring(0, 20) + " ..." : order.films.title}</p>
                                     </div>
                                     <div className={[["detail-order"], style['detailed']].join(' ')}>
                                         <p className="criteria">{order.date}</p>

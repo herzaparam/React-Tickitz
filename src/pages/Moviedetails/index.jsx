@@ -151,7 +151,7 @@ export class Moviedetails extends Component {
                     </div>
                     <div className={[style['section'], style['flex-col'], style['bg-grey']].join(' ')}>
                         <div className="line"><h4>Showtimes and Tickets</h4></div>
-                        <div className={[['line'], style['flex'], style['center']].join(' ')}>
+                        <div className={[['line'], style['flex'], style['center'], style["hehe"]].join(' ')}>
                             <input type="date" onChange={this.handleDate} />
                             <select name="city" id="city" onChange={this.handleCity}>
                                 <option value="Jakarta" >Jakarta</option>
@@ -162,7 +162,7 @@ export class Moviedetails extends Component {
                         <div className={[['line'], style['grid-3']].join(' ')}>
                             {this.props.location.location.map((item) =>
                                 <div className={[['card'], style['flex-col']].join(' ')} key={item.id}>
-                                    <div className={[style['card-line'], style['flex']].join(' ')}>
+                                    <div className={[style['card-line'], style['flex'], style["hehe"]].join(' ')}>
                                         <div className={[style['card-img'], style['grow-1']].join(' ')}>
                                             <img src={`${urlImg}${item.image}`} alt="" />
                                         </div>
@@ -174,17 +174,17 @@ export class Moviedetails extends Component {
                                     <div className={[style['card-line-1'], style['grid-4']].join(' ')}>
                                         <button className={this.state.activeBtn === 1 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 1, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="08:30am">08:30am</button>
                                         <button className={this.state.activeBtn === 2 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 2, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="10:30am">10:30am</button>
-                                        <button className={this.state.activeBtn === 3 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 3, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="12:00am">12:00pm</button>
-                                        <button className={this.state.activeBtn === 4 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 4, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="02:00am">02:00pm</button>
-                                        <button className={this.state.activeBtn === 5 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 5, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="04:30am">04:30pm</button>
-                                        <button className={this.state.activeBtn === 6 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 6, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="07:70am">07:00pm</button>
-                                        <button className={this.state.activeBtn === 7 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 7, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="08:30am">08:30pm</button>
+                                        <button className={this.state.activeBtn === 3 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 3, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="12:00pm">12:00pm</button>
+                                        <button className={this.state.activeBtn === 4 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 4, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="02:00pm">02:00pm</button>
+                                        <button className={this.state.activeBtn === 5 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 5, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="04:30pm">04:30pm</button>
+                                        <button className={this.state.activeBtn === 6 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 6, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="07:70pm">07:00pm</button>
+                                        <button className={this.state.activeBtn === 7 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 7, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="08:30pm">08:30pm</button>
                                     </div>
                                     <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
                                         <p className="price">price</p>
                                         <p className={style['price-sum']}>Rp.{item.price} /seat</p>
                                     </div>
-                                    <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
+                                    <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line'], style["hehe"]].join(' ')}>
                                         <button onClick={this.handleBook}>Book Now</button>
                                         <Link to="" className={style['paddingr-1']}>add to cart</Link>
                                     </div>
@@ -192,7 +192,7 @@ export class Moviedetails extends Component {
                             )}
 
                         </div>
-                        <div className={[['line'], style['flex'], style['mgtb-2'], ['line-2']].join(' ')}>
+                        <div className={[['line'], style['flex'], style['mgtb-2'], ['line-2'], style["hehe"]].join(' ')}>
                             <div className={[style['line-lit'], style['grow-3']].join(' ')}><hr /></div>
                             <div className={[style['line-lit'], style['grow-1']].join(' ')}><Link to="">view more</Link></div>
                             <div className={[style['line-lit'], style['grow-3']].join(' ')}><hr /></div>

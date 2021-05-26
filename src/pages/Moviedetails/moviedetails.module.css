@@ -265,3 +265,63 @@ button>img{
     text-align: center;
     outline: none;
 }
+@media (max-width: 991.98px) { 
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+        padding: 3em;
+    }
+}
+@media (max-width: 767.98px) { 
+    .grid-3 {
+        padding: 1em 0;
+    }
+    .desc-synopsis {
+        height: 10em;
+        overflow: auto;
+    }
+    .line-lit > a {
+        padding-left: 2em;
+    }
+}
+@media (max-width: 575.98px) {
+    .flex {
+        flex-direction: column;
+    }
+    .border {
+        margin: 0 3.5em;
+    }
+    .hehe {
+        flex-direction: row;
+    }
+    .grid-3 {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+@media (max-width: 375.98px) {
+    .border {
+        margin: 0;
+    }
+    .image > img {
+        width: 285px;
+    }
+    .card-img {
+        padding-left: 0;
+    }
+    .card-img > img {
+        width: 110px;
+    }
+    .grid-4 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card-line {
+        margin: 0;
+    }
+    .sp-bt {
+        padding-top: 0;
+    }
+    .grid-3 {
+        width: 100%;
+    }
+}
