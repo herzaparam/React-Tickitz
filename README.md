@@ -68,7 +68,7 @@ here's some preview from this site ..
 </div>
 
 ## Publication
-you can visit our website here : [https://tickitz-movie.netlify.app/](https://tickitz-movie.netlify.app/)
+you can visit our website here : [https://tickitz-arka-apps.netlify.app/](https://tickitz-arka-apps.netlify.app/)
 
 ## Back end Repositories
 visit [here](https://github.com/herzaparam/back-end-intermediate.git)
