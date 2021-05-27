@@ -4,6 +4,7 @@ import  store  from './configs/redux/store'
 import Route from './configs/route/route'
 
 
+
 function App() {
   return (
     <Provider store={store}>

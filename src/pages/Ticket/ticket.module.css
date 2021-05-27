@@ -13,6 +13,7 @@
 }
 .box-ticket > h3 {
     text-align: center;
+    font-size: 2rem;
 }
 .ticket {
     width: 100%;
@@ -42,6 +43,7 @@
 }
 .ticket-top-left > h5 {
     margin-bottom: 0;
+    color: white;
 }
 .ticket-top-left > img, .ticket-top-right > img {
     height: 3em;

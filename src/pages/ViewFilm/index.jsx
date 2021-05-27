@@ -77,11 +77,11 @@ function ViewFilm() {
         <div>
             <MyNavbar />
             <div className={style["sorting"]}>
-                <select name="category" id="category" onChange={e => setCategory(e.target.value)}>
+                <select className={style["inpt-category"]} name="category" id="category" onChange={e => setCategory(e.target.value)}>
                     <option value="now">Now Showing</option>
                     <option value="upcoming">Upcoming</option>
                 </select>
-                <select name="genre" id="genre" onChange={e => setGenre(e.target.value)}>
+                <select className={style["inpt-category"]} name="genre" id="genre" onChange={e => setGenre(e.target.value)}>
                     <option value="Action">Action</option>
                     <option value="Horror">Horror</option>
                     <option value="Romance">Romance</option>

@@ -39,7 +39,7 @@
     justify-content: space-around;
     padding: 2em;
 }
-.sorting > select {
+.inpt-category {
     width: 15%;
     height: 3em;
     padding: 0 1em ;

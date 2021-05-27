@@ -56,34 +56,6 @@
     padding: 0 5%;
     justify-content: center;
 }
-/* h2,h3,h4 */
-h2, h3, h4{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-}
-h2{
-    font-size: 3vw;
-    letter-spacing: 0.003em;    
-    color: rgba(255, 255, 255, 0.8);
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-h3{
-    font-weight: 600;
-    font-size: 5vw;
-    color: rgba(18, 18, 18, 1);
-    margin: 0;
-    padding-bottom: 15px;
-    
-}
-h4{
-    font-size: 1.5vw;
-    letter-spacing: 0.007em;
-    color: #AAAAAA;
-    margin: 0;
-}
 
 .label{
     font-family: Mulish;

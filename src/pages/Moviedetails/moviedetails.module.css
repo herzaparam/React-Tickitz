@@ -253,11 +253,9 @@ button>img{
     outline: none;
     position: relative;
     color: black;
-    height: 3em;
 }
 .flex > input {
     width: 12em;
-    height: 3em;
     margin: 0 5px;
     border: none;
     background: #EFF0F6;
