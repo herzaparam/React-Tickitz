@@ -96,9 +96,9 @@ function Signin() {
                 </section>
                 <section className={style['box2']}>
                     <form action="">
-                        <Input name="email" setValue={email} type="text" placeholder="write your email" label="email" onChange={(e) => setEmail(e.target.value)} /><br />
-                        <Input name="password" setValue={password} type="password" placeholder="write your password" label="Password" onChange={(e) => setPassword(e.target.value)} /><br />
-                        <MyButton title="Sign in" color="" size="full" onClick={handleLogin} />
+                        <Input className="input-signup" name="email" setValue={email} type="text" placeholder="write your email" label="email" onChange={(e) => setEmail(e.target.value)} /><br />
+                        <Input className="input-signup" name="password" setValue={password} type="password" placeholder="write your password" label="Password" onChange={(e) => setPassword(e.target.value)} /><br />
+                        <MyButton className="btn-auth" title="Sign in" color="" size="full" onClick={handleLogin} />
                     </form>
                     <p className={style['f-password']}>Forgot your password? <Link to="/forgot-password">Reset now</Link></p>
                 </section>

@@ -11,6 +11,8 @@ import ebuid from './ebuid.png'
 import downloadicon from './download icon.png'
 import printericon from './printer icon.png'
 import barcode from './barcode.png'
+import cardloyalty from './cardloyalty.png'
+import staricon from './eva_star-fill.png'
 
 export{
     bgimg,
@@ -25,5 +27,7 @@ export{
     cineone,
     downloadicon,
     printericon,
-    barcode
+    barcode,
+    cardloyalty,
+    staricon
 }

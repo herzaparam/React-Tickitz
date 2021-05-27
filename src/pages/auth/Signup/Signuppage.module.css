@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 *{
     font-family: 'Mulish', sans-serif !important;
+    font-style: normal;
 }
 .container{
     /* background-color: blue; */
@@ -19,7 +20,8 @@
 }
 .container-bg > img{
     width: 100%;
-    display: block;
+    height: 100vh;
+    object-fit: cover;
 }
 .container-bg::after{
     content: "";
@@ -37,14 +39,29 @@
     z-index: 10;
     padding: 0;
     margin: 0;
-    top: 35%;
-    left: 40%;
+    top: 25%;
+    left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    width: 80%;
 }
-.container-bg-content > *{
-    width: 100%;
+.container-bg-content > img {
+    width: 50%;
 }
+.container-bg-content > h2 {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0.003em;
+    color: #FFFFFF;
+    margin-top: 1em;
+}
+.container-bg-content > h5 {
+    font-size: 24px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 
 .container-form{ 
     /* background-color: brown; */
@@ -73,18 +90,7 @@
     display: flex;
     justify-content: space-between;
 }
-input[type=text], input[type=password]{
-    width: 100%;
-    height: 5vw;
-    background: #FCFDFE;
-    border: 1px solid #DEDEDE;
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin: 12px 0;
-    font-size: 1.6rem;
-    
 
-}
 ::placeholder{
     width: auto;
     font-family: Mulish;
@@ -114,7 +120,7 @@ input[type=submit], select{
 }
 .f-password{
     text-align: center;
-    margin-top: 32px;
+    margin-top: 18px;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -167,7 +173,6 @@ input[type=submit], select{
 .box3{
     display: flex;
     align-items: center;
-    padding: 10% 0;
     margin: 0;
 }
 
@@ -252,18 +257,12 @@ hr{
         display: none;
     }
     .box1 > h3{
-        font-size: 2rem;
-        
+        font-size: 2rem;     
     }
-    .box1 > h4{
+    .box1 > h4 {
         display: none;
+        font-weight: 700;
     }
-    input[type=text], input[type=password]{
-        height: 2.3em;
-        padding-left: .7em;
-        font-size: 2rem;
-    }
-  
     .f-password{
         font-size: 1.7rem;
     }

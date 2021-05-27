@@ -3,7 +3,7 @@
     height: 50px ;
     width: 200px ;
     object-fit: contain;
-    margin-left: 3vw;
+    margin-left: 5vw;
 }
 .order-info > p {
     text-align: center;
@@ -43,6 +43,7 @@
     border-radius: 8px;
     border: none;
     color: white;
+    min-height: 3em;
     height: min-content;
 }
 .cont-box2 {

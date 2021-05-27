@@ -77,8 +77,6 @@ class Signup extends Component {
 
     }
 
-
-    
     render() {
         return (
             <div className={style['container']}>
@@ -95,16 +93,15 @@ class Signup extends Component {
                         <img src={tickitzpurpleimg} alt="" />
                     </section>
                     <section className={style['box1']}>
-                        <h3>Sign Up</h3>
                         <h4>You can sign up here</h4>
                     </section>
                     <section className={style['box2']}>
                         <form action="">
-                            <Input name="email" type="text" placeholder="write your email" label="email" onChange={this.handleChange} />
+                            <Input className="input-signup" name="email" type="text" placeholder="write your email" label="email" onChange={this.handleChange} />
                             <div className={style.errEmail}>{this.state.user.errEmail}</div><br />
-                            <Input name="password" type="password" placeholder="write your password" label="Password" onChange={this.handleChange} />
+                            <Input className="input-signup" name="password" type="password" placeholder="write your password" label="Password" onChange={this.handleChange} />
                             <div className={style.errEmail}>{this.state.user.errPassword}</div><br />
-                            <MyButton title="Sign up" color="" size="full" onClick={this.handleRegister} />
+                            <MyButton className="btn-auth" title="Sign up" color="" size="full" onClick={this.handleRegister} />
                         </form>
                         <p className={style['f-password']}>Already have an account? <Link to="/signin">Log in</Link></p>
                     </section>

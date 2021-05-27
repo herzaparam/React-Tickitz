@@ -80,9 +80,9 @@ function ForgotPass() {
             <div className={style['container-form']}>
                 {location.search ?
                     <>
-                        <label htmlFor="" className={style["form-label"]}>new password</label>
+                        <label className={style["form-label"]}>new password</label>
                         <input name="password" type="password" onChange={handleChange} />
-                        <label htmlFor="" className={style["form-label"]}>new password confirmation</label>
+                        <label className={style["form-label"]}>new password confirmation</label>
                         <input name="confirmPassword" type="password" onChange={handleChange} />
                         <MyButton title="Reset" size="full" onClick={handleReset} />
                     </>
@@ -92,10 +92,10 @@ function ForgotPass() {
                             <h3>Fill your complete email</h3>
                             <h4>we'll send a link to your email shortly</h4>
                         </div>
-                        <form action="">
-                            <label htmlFor="" className={style["form-label"]}>Your Email</label>
+                        <form action="" className={style["form-forgot"]}>
+                            <label className={style["form-label"]}>Your Email</label>
                             <input type="text" onChange={(e) => setEmail(e.target.value)} />
-                            <MyButton title="Reset" size="full" onClick={handleSubmit} />
+                            <MyButton className="btn-auth" title="Reset" size="full" onClick={handleSubmit} />
                         </form>
                     </>
                 }

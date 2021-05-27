@@ -14,6 +14,8 @@
 .box-ticket > h3 {
     text-align: center;
     font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1em;
 }
 .ticket {
     width: 100%;

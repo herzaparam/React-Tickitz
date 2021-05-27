@@ -13,7 +13,19 @@
     border-radius: 8px;
     padding: 1.5em;
 }
-
+.title-mov > h3 {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    color: #14142B;
+}
+.title-mov > p {
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 0.75px;
+    color: #4E4B66;
+}
 .flex-col{
     display: flex;
     flex-direction: column;
@@ -76,7 +88,7 @@ p.desc{
 .desc-synopsis{
     margin-top: 1em;
 }
-.desc-synopsis h4{
+.desc-synopsis > h4{
     font-style: normal;
     font-weight: normal;
     font-size: 2rem; 
@@ -189,7 +201,7 @@ button.activeBtn {
     letter-spacing: 0.75px;
     color: #5F2EEA;
 }
-.line h4{
+.line > h4{
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 700;
@@ -253,6 +265,7 @@ button>img{
     outline: none;
     position: relative;
     color: black;
+    height: 3em;
 }
 .flex > input {
     width: 12em;
@@ -262,6 +275,7 @@ button>img{
     border-radius: 6px;
     text-align: center;
     outline: none;
+    height: 3em;
 }
 @media (max-width: 991.98px) { 
     .grid-3 {

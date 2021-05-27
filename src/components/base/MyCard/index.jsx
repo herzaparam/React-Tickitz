@@ -13,7 +13,7 @@ export class MyCard extends Component {
                 <img src={`${this.props.img}`} alt="tes" />
                 <h5>{this.props.title.length > 11 ? this.props.title.substring(0, 11) + ' . . .' : this.props.title}</h5>
                 <p>{this.props.genre}</p>
-                <MyButton title="details" size="full" onClick={this.props.routeChange} color="" />
+                <MyButton className="btn-card" title="details" size="full" onClick={this.props.routeChange} color="" />
             </div>
         )
     }

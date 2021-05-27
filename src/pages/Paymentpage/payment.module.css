@@ -26,11 +26,33 @@
 .itemInfo1{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 13px;
+    border-bottom: 1px solid #E6E6E6;
 }
+.itemInfo1 > h5 {
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.25px;
+    color: #6B6B6B;
+}
+.itemInfo1 > h4 {
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.25px;
+    color: #000000;
+}
+.intemInfo > h4 {
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.25px;
+    font-weight: 600;
+    color: #000000;
+} 
 .itemInfoCont{
     border-radius: 24px;
     background-color: #FFFFFF;
     padding: 15px;
+    margin-bottom: 1.5em;
 }
 .box1{
     display: flex;
@@ -45,6 +67,14 @@
     background-color: #FFFFFF;
     border-radius: 24px;
 }
+.box1 > h4, .box2 > h4, .contSide > h4 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.25px;
+    color: #14142B;
+}
+
 .gridPay{
     display: grid;
     
@@ -62,9 +92,7 @@
     width: auto;
     border: 2px solid #DEDEDE;
     border-radius: 8px;
-    padding: .7em 1em;
-    
-    
+    padding: .7em 1em;   
 }
 .payMethod img{ 
     width: 50px;
@@ -72,19 +100,29 @@
     object-fit: contain;
     
 }
-.contSide input[type=text]{
+.contSide > input[type=text]{
     width: 100%;
     height: 50px;
-    margin: 1em 0;
+    margin: 0 0 1em 0;
     font-family: 'Mulish', sans-serif;
     padding-left: 20px;
     border-radius: 8px;
     border: 1px solid #DEDEDE;
 }
-::placeholder{
-    font-size: 16px;
-}
 
+.nice > input {
+    border: 1px solid #DEDEDE;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    height: 3em;
+}
+.nice > label {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #696F79;
+}
 
 .warning{
     width: 100%;

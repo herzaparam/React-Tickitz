@@ -39,7 +39,7 @@ export class Moviedetails extends Component {
 
     componentDidMount() {
         this.props.getUser()
-        
+
         if (this.state.city !== undefined) {
             this.props.getLocation(this.state.city)
         }
@@ -87,16 +87,16 @@ export class Moviedetails extends Component {
             city: e.target.value
         })
     }
-    handleBook = (e) =>{
+    handleBook = (e) => {
         e.preventDefault()
-        if(this.state.date === ""){
+        if (this.state.date === "") {
             return Swal.fire({
                 icon: "info",
                 title: "Please select order date",
                 showConfirmButton: false,
                 timer: 1500
             })
-        } else if(this.state.time === ""){
+        } else if (this.state.time === "") {
             return Swal.fire({
                 icon: "info",
                 title: "Please select order time",
@@ -111,7 +111,7 @@ export class Moviedetails extends Component {
 
     render() {
         const urlImg = process.env.REACT_APP_API_IMG
-        
+
         return (
             <div>
                 <MyNavbar routeSignUp={() => this.routeChangeSignUp()} isLoggedIn={this.props.user.isLoggedIn} allFilm={this.props.allFilms} userImage={this.props.user.user.image} />
@@ -121,26 +121,26 @@ export class Moviedetails extends Component {
                             <img src={this.state.films.image} alt="" />
                         </div>
                         <div className={[['descript'], style['flex-col'], style['mgrl-1']].join(' ')}>
-                            <div className="desc-tittle">
+                            <div className={style["title-mov"]}>
                                 <h3>{this.state.films.title}</h3>
                                 <p>{this.state.films.genre}</p>
                             </div>
                             <div className={[['desc-detail'], style['grid-2'], style['border-bot']].join(' ')}>
                                 <div>
-                                    <p className="detail">Release Date</p>
-                                    <p className="desc">June 28,2017</p>
+                                    <p className={style["detail"]}>Release Date</p>
+                                    <p className={style["desc"]}>June 28,2017</p>
                                 </div>
                                 <div>
-                                    <p className="detail">Directed by</p>
-                                    <p className="desc">Jon Watss</p>
+                                    <p className={style["detail"]}>Directed by</p>
+                                    <p className={style["desc"]}>Jon Watss</p>
                                 </div>
                                 <div>
-                                    <p className="detail">Duration</p>
-                                    <p className="desc">{this.state.films.movie_duration}</p>
+                                    <p className={style["detail"]}>Duration</p>
+                                    <p className={style["desc"]}>{this.state.films.movie_duration}</p>
                                 </div>
                                 <div>
-                                    <p className="detail">Casts</p>
-                                    <p className="desc">{this.state.films.casts}</p>
+                                    <p className={style["detail"]}>Casts</p>
+                                    <p className={style["desc"]}>{this.state.films.casts}</p>
                                 </div>
                             </div>
                             <div className={style['desc-synopsis']}>
@@ -150,7 +150,9 @@ export class Moviedetails extends Component {
                         </div>
                     </div>
                     <div className={[style['section'], style['flex-col'], style['bg-grey']].join(' ')}>
-                        <div className="line"><h4>Showtimes and Tickets</h4></div>
+                        <div className={style["line"]}>
+                            <h4>Showtimes and Tickets</h4>
+                        </div>
                         <div className={[['line'], style['flex'], style['center'], style["hehe"]].join(' ')}>
                             <input type="date" onChange={this.handleDate} />
                             <select name="city" id="city" onChange={this.handleCity}>
@@ -173,12 +175,12 @@ export class Moviedetails extends Component {
                                     </div>
                                     <div className={[style['card-line-1'], style['grid-4']].join(' ')}>
                                         <button className={this.state.activeBtn === 1 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 1, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="08:30am">08:30am</button>
-                                        <button className={this.state.activeBtn === 2 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 2, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="10:30am">10:30am</button>
-                                        <button className={this.state.activeBtn === 3 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 3, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="12:00pm">12:00pm</button>
-                                        <button className={this.state.activeBtn === 4 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 4, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="02:00pm">02:00pm</button>
-                                        <button className={this.state.activeBtn === 5 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 5, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="04:30pm">04:30pm</button>
-                                        <button className={this.state.activeBtn === 6 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 6, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="07:70pm">07:00pm</button>
-                                        <button className={this.state.activeBtn === 7 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 7, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name})} value="08:30pm">08:30pm</button>
+                                        <button className={this.state.activeBtn === 2 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 2, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="10:30am">10:30am</button>
+                                        <button className={this.state.activeBtn === 3 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 3, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="12:00pm">12:00pm</button>
+                                        <button className={this.state.activeBtn === 4 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 4, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="02:00pm">02:00pm</button>
+                                        <button className={this.state.activeBtn === 5 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 5, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="04:30pm">04:30pm</button>
+                                        <button className={this.state.activeBtn === 6 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 6, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="07:70pm">07:00pm</button>
+                                        <button className={this.state.activeBtn === 7 && this.state.btnId === item.id ? style["activeBtn"] : "btn-time"} onClick={(e) => this.setState({ time: e.target.value, activeBtn: 7, btnId: item.id, price: item.price, cinemaImg: item.image, cinemaName: item.name })} value="08:30pm">08:30pm</button>
                                     </div>
                                     <div className={[style['card-line'], style['flex'], style['sp-bt'], style['base-line']].join(' ')}>
                                         <p className="price">price</p>
@@ -217,8 +219,8 @@ const mapDispatchToProps = dispatch => ({
     getLocation: (city) => {
         dispatch(getLocation(city))
     },
-    addOrder:(data) => {
-        dispatch({type: "ADD_ORDER", payload: data})
+    addOrder: (data) => {
+        dispatch({ type: "ADD_ORDER", payload: data })
     }
 });
 

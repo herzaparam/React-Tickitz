@@ -1,12 +1,11 @@
 import React from 'react'
 import style from './button.module.css'
 
-function MyButton({title, color, size, onClick}) {
+function MyButton({ title, color, size, onClick, className }) {
     return (
-    
-        <div>
-            <button onClick={onClick}  className={`${style.btn} ${style[color]} ${style[size]}`}>{title}</button>
-        </div>
+        <>
+            <button onClick={onClick} className={style[`${className}`]}>{title}</button>
+        </>
     )
 }
 

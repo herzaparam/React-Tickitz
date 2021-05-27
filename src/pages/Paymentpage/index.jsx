@@ -62,24 +62,24 @@ function PaymentPage() {
                         <h4>Payment Info</h4>
                         <div className={`${style.itemInfoCont}`}>
                             <div className={`${style.itemInfo1}`}>
-                                <p>Date & time</p>
-                                <p>{order.date} at {order.time}</p>
+                                <h5>Date & time</h5>
+                                <h4>{order.date} at {order.time}</h4>
                             </div>
                             <div className={`${style.itemInfo1}`}>
-                                <p>Movie title</p>
-                                <p>{order.films.title}</p>
+                                <h5>Movie title</h5>
+                                <h4>{order.films.title}</h4>
                             </div>
                             <div className={`${style.itemInfo1}`}>
-                                <p>Cinema name</p>
-                                <p>{order.cinemaName}</p>
+                                <h5>Cinema name</h5>
+                                <h4>{order.cinemaName}</h4>
                             </div>
                             <div className={`${style.itemInfo1}`}>
-                                <p>Number of tickets</p>
-                                <p>{order.selectedSeat.length} Pieces</p>
+                                <h5>Number of tickets</h5>
+                                <h4>{order.selectedSeat.length} Pieces</h4>
                             </div>
                             <div className={`${style.itemInfo}`}>
-                                <p>Total payment</p>
-                                <p>Rp.{order.totalPrice},-</p>
+                                <h5>Total payment</h5>
+                                <h4>Rp.{order.totalPrice},-</h4>
                             </div>
 
                         </div>
@@ -114,8 +114,8 @@ function PaymentPage() {
                         </div>
                     </section>
                     <div className={`${style.btnflex}`}>
-                        <MyButton title="Previous Step" color="white" />
-                        <MyButton title="Pay Your order" onClick={handlePayment} />
+                        <MyButton className="btn-order2" title="Previous Step" color="white" />
+                        <MyButton className="btn-order" title="Pay Your order" onClick={handlePayment} />
                     </div>
                 </div>
                 <div className={`${style.contSide}`}>

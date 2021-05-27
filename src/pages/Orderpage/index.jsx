@@ -165,8 +165,8 @@ function OrderPage() {
                                 </div>
                             </div>
                             <div className={style["btn"]}>
-                                <MyButton title="Change movie" color="white" />
-                                <MyButton title="checkout Now" onClick={handleCheckOut} />
+                                <MyButton className="btn-order2" title="Change movie" color="white" />
+                                <MyButton className="btn-order" title="checkout Now" onClick={handleCheckOut} />
                             </div>
                         </div>
                         <div className="col-sm-4">

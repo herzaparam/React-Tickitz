@@ -51,7 +51,7 @@ function MyNavbar({ isLoggedIn }) {
                     setAllfilms(res.data.data)
                 })
                 .catch((err) => {
-                    if(err.response.status === 404 ){
+                    if (err.response.status === 404) {
                         return allFilms
                     }
                     Swal.fire({
@@ -78,18 +78,17 @@ function MyNavbar({ isLoggedIn }) {
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/allmovies">Movies</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="#">Cinemas</Link>
+                        <li className={[["nav-item"], style["disabled"]].join(' ')} >
+                            <button disabled="true">Cinemas</button>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="">Buy Ticket</Link>
+                        <li className={[["nav-item"], style["disabled"]].join(' ')}>
+                            <button disabled="true">Buy Ticket</button>
                         </li>
 
                     </ul>
                     <div className="nav-item dropdown">
-                        <Link className="nav-link " to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Location
-          </Link>
+                      <button className={style["btn-loc-disable"]} disabled="true">Location</button>
+
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><Link className="dropdown-item" to="#">Jakarta</Link></li>
                             <li><Link className="dropdown-item" to="#">Surabaya</Link></li>
