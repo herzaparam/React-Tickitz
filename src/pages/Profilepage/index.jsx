@@ -33,9 +33,9 @@ function ProfilePage(props) {
     const [count, setCount] = useState(0)
 
     const { user } = useSelector(state => state.userReducer)
-    console.log(user);
+
     useEffect(() => {
-        if (user.email === "") {
+        if (localStorage.getItem('token') && user.email === "") {
             dispatch(getUser())
         }
 
@@ -54,7 +54,10 @@ function ProfilePage(props) {
             })
     }, [count])
 
-
+    const routePageAdmin = (e) => {
+        e.preventDefault();
+        history.push("/admin-page")
+    }
 
     const handleChange = (e) => {
         setData({
@@ -113,7 +116,7 @@ function ProfilePage(props) {
                                         <input className={style.inpt} name="image" type="file" onChange={handleChangeImage}></input>
                                     </label>
                                     <h5>{user.fname} {user.lname}</h5>
-                                    <p>{user.role !== 'admin' ? 'user' : 'admin'}</p>
+                                    <p>{user.role !== 1 ? 'user' : 'admin'}</p>
                                 </div>
                                 <div className={style["loyalty"]}>
                                     <p>Loyalty Point</p>
@@ -155,7 +158,14 @@ function ProfilePage(props) {
                                             <Input className="input-signup" label="Password" disabled="true"></Input>
                                             <Input className="input-signup" label="Confirm password" disabled="true"></Input>
                                         </div>
-                                        <MyButton className="btn-profile" title="update" onClick={updateProfile} />
+                                        <div className={style["group-btn"]}>
+                                            <MyButton className="btn-profile" title="update" onClick={updateProfile} />
+                                            {
+                                                user.role === 1 &&
+                                                <MyButton className="btn-profile2" title="go to Admin page" onClick={routePageAdmin} />
+                                            }
+                                        </div>
+
                                     </div>
                                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         {ticket.map((item) => {

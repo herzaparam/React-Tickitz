@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { getUser } from '../../../configs/redux/actions/user'
-import { getMovie } from '../../../configs/redux/actions/movie'
 
 import MyButton from '../../base/Button'
 import { tickitzpurpleimg, searchlogo } from '../../../assets/image'
@@ -41,7 +40,6 @@ function MyNavbar({ isLoggedIn }) {
         if (user.email === "") {
             dispatch(getUser())
         }
-        // dispatch(getMovie())
 
     }, [])
     useEffect(() => {
@@ -79,16 +77,15 @@ function MyNavbar({ isLoggedIn }) {
                             <Link className="nav-link active" aria-current="page" to="/allmovies">Movies</Link>
                         </li>
                         <li className={[["nav-item"], style["disabled"]].join(' ')} >
-                            <button disabled="true">Cinemas</button>
+                            <button disabled={true}>Cinemas</button>
                         </li>
                         <li className={[["nav-item"], style["disabled"]].join(' ')}>
-                            <button disabled="true">Buy Ticket</button>
+                            <button disabled={true}>Buy Ticket</button>
                         </li>
 
                     </ul>
                     <div className="nav-item dropdown">
-                      <button className={style["btn-loc-disable"]} disabled="true">Location</button>
-
+                      <button className={style["btn-loc-disable"]} disabled={true}>Location</button>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><Link className="dropdown-item" to="#">Jakarta</Link></li>
                             <li><Link className="dropdown-item" to="#">Surabaya</Link></li>

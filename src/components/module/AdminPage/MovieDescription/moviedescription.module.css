@@ -69,10 +69,15 @@
 }
 .group-input {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 .group-input > input[type=text] {
-    height: 2em;
+    height: 3em;
     margin: 0;
+    background: #FCFDFE;
+    border: 1px solid #DEDEDE;
+    border-radius: 4px;
 }
 .loca {
     color: black;
@@ -117,10 +122,11 @@
 .group-input-dura {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 .group-input-dura > input {
     height: 3em;
-    width: 5em;
+    width: 3em;
     margin: 0 10px;
     border-radius: 8px;
     border: 1px solid #DEDEDE;
@@ -132,4 +138,27 @@
 .group-input-dura input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.lmt-left {
+    position: relative;
+}
+.lmt-left:hover::after {
+    cursor: pointer;
+    content: "+";
+    font-weight: 700;
+    font-size: 48px;
+    position: absolute;
+    background-color: #5F2EEA;
+    opacity: 0.5;
+    border-radius: 6px;
+    width: 170px;
+    height: 225px;
+    left: 5.6%;
+    text-align: center;
+    padding: 40% 0;
+    color: white;
+
+}
+.group-input-dura > p {
+    font-size: 2em;
 }

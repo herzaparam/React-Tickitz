@@ -28,6 +28,18 @@ function Signin() {
         }
         dispatch(login(data))
             .then((res) => {
+                if (res.role === 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success!',
+                        text: `hi ${res.email}`,
+                        footer: "You are login as admin",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    history.push('/')
+                    return
+                }
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Success!',
@@ -50,7 +62,6 @@ function Signin() {
         if (location.search) {
             axios.get(`${urlApi}user/verify/?email=${email}&token=${token}`)
                 .then((res) => {
-                    console.log(res);
                     Swal.fire({
                         icon: 'success',
                         title: `Congratulation!`,
@@ -61,7 +72,7 @@ function Signin() {
                     history.push('/signin')
                 })
                 .catch((err) => {
-                    if(err.response.data.message === 'secretKey is not defined'){
+                    if (err.response.data.message === 'secretKey is not defined') {
                         return Swal.fire({
                             icon: 'error',
                             title: 'Oops...',

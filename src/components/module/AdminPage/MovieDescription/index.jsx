@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 import style from './moviedescription.module.css'
 import { ebuid, hiflix, cineone } from '../../../../assets/image/index'
 
 function MovieDescription() {
+    const [insert, setInsert] = useState({
+        image: null,
+        title: "",
+        genre: "",
+        dateShow: "",
+
+    })
+    
     return (
         <div className={style["container-flex"]}>
             <div className={style["container-left"]}>
@@ -30,8 +38,9 @@ function MovieDescription() {
                                 <div className={[style["dura"],style["group-input"]].join(" ")}>
                                     <label htmlFor="">Duration (Hour / Minute)</label>
                                     <div className={style["group-input-dura"]}>
-                                        <input type="number" />
-                                        <input type="number" />
+                                        <input type="text" pattern="\d*" maxLength="1"/>
+                                        <p>:</p>
+                                        <input type="text" pattern="\d*" maxLength="2"/>
                                     </div>
                                 </div>
                             </div>

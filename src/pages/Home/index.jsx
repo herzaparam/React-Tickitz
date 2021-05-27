@@ -16,7 +16,9 @@ import { getUser } from '../../configs/redux/actions/user'
 export class Home extends Component {
     componentDidMount() {
         this.props.getMovie()
-        this.props.getUser()
+        if(localStorage.getItem('token') && this.props.user === ""){
+            this.props.getUser()
+        }
     }
     routeChangeById = (id) => {
         this.props.history.push(`/moviedetails/${id}`)
@@ -26,6 +28,7 @@ export class Home extends Component {
     }
 
     render() {
+       
         return (
             <div>
                 <MyNavbar />

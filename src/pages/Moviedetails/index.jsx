@@ -64,15 +64,6 @@ export class Moviedetails extends Component {
         this.props.history.push(`/orderpage/${id}`)
     }
 
-    displayImage = (bioskop) => {
-        if (bioskop === 'ebuid') {
-            return <img src={ebuid} alt="" srcset="" />
-        } else if (bioskop === 'hiflix') {
-            return <img src={hiflix} alt="" srcset="" />
-        } else {
-            return <img src={cineone} alt="" srcset="" />
-        }
-    }
     routeChangeSignUp = () => {
         this.props.history.push(`/signup`)
     }
