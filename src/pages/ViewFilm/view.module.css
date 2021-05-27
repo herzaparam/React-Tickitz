@@ -43,4 +43,8 @@
     width: 15%;
     height: 3em;
     padding: 0 1em ;
+    background: #5F2EEA;
+    border-radius: 4px; 
+    color: #F7F7FC;
+    border: none;
 }

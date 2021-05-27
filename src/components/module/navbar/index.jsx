@@ -122,7 +122,7 @@ function MyNavbar({ isLoggedIn }) {
                     </form>
                     <div className="nav-item dropdown">
                         {user.email === "" ?
-                            <MyButton title="Sign Up" onClick={(e) => history.push("/signup")} /> :
+                            <MyButton className="btn-order" title="Sign Up" onClick={(e) => history.push("/signup")} /> :
                             <div>
                                 <button className={`nav-link ${style.btnProfile}`} to="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src={`${urlImg}${user.image}`} alt="" />

@@ -256,7 +256,7 @@ button>img{
 .drop-content-active li:hover{
     background-color: grey;
 }
-.flex > select {
+.s-mov-detail {
     width: 12em;
     margin: 0 5px;
     border: none;

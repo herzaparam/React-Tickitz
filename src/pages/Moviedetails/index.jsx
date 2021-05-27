@@ -155,7 +155,7 @@ export class Moviedetails extends Component {
                         </div>
                         <div className={[['line'], style['flex'], style['center'], style["hehe"]].join(' ')}>
                             <input type="date" onChange={this.handleDate} />
-                            <select name="city" id="city" onChange={this.handleCity}>
+                            <select className={style["s-mov-detail"]} name="city" id="city" onChange={this.handleCity}>
                                 <option value="Jakarta" >Jakarta</option>
                                 <option value="Surabaya" >Surabaya</option>
                                 <option value="Bandung" >Bandung</option>
