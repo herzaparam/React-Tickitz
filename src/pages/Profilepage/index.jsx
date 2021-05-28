@@ -93,7 +93,7 @@ function ProfilePage(props) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong!',
+                    text: err.response.data.message,
                 })
             })
     }
@@ -155,8 +155,8 @@ function ProfilePage(props) {
 
                                         </div>
                                         <div className={style['privacy']}>
-                                            <Input className="input-signup" label="Password" disabled="true"></Input>
-                                            <Input className="input-signup" label="Confirm password" disabled="true"></Input>
+                                            <Input className="input-signup" label="Password" disabled={true}></Input>
+                                            <Input className="input-signup" label="Confirm password" disabled={true}></Input>
                                         </div>
                                         <div className={style["group-btn"]}>
                                             <MyButton className="btn-profile" title="update" onClick={updateProfile} />
