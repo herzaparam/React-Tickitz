@@ -4,7 +4,7 @@ const initialState = {
         password: '',
     },
     isLoggedIn: false,
-    role: ""
+    role: null
 }
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -28,6 +28,16 @@ const userReducer = (state = initialState, action) => {
                 isLoggedIn: true,
                 role: action.payload.role
             }
+            case 'LOG_OUT':
+                return {
+                    user: {
+                        email: '',
+                        password: '',
+                    },
+                    isLoggedIn: false,
+                    role: null
+                }
+
         default:
             return state
     }

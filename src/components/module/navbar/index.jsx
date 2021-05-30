@@ -19,7 +19,7 @@ function MyNavbar({ isLoggedIn }) {
     const [authLogin, setAuthLogin] = useState(isLoggedIn)
     const [allFilms, setAllfilms] = useState([])
 
-    const { user } = useSelector(state => state.userReducer)
+    const { user,role } = useSelector(state => state.userReducer)
     // const { allFilms } = useSelector(state => state.movieReducer)
 
     const handleShowSearch = (e) => {
@@ -33,7 +33,8 @@ function MyNavbar({ isLoggedIn }) {
     const handleLogOut = (e) => {
         localStorage.removeItem("token")
         setAuthLogin(false)
-        window.location.reload()
+        dispatch({type: 'LOG_OUT'})
+        history.push("/")
     }
 
     useEffect(() => {

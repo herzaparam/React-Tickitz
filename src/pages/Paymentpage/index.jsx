@@ -33,7 +33,6 @@ function PaymentPage() {
             title: "are you sure?",
         }).then((async (result) => {
             if (result.isConfirmed) {
-                console.log(user, order);
                 const res = await axios.post(`${urlApi}ticket`, { user: user, order: order })
                 if (res.request.status === 200) {
                     Swal.fire('Saved!', '', 'success')
