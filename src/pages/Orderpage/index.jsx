@@ -34,13 +34,13 @@ function OrderPage() {
 
 
     const handleSeat = (box) => {
-        if (selectedSeat.length < 4) {
-            setSelectedSeat([...selectedSeat, box])
-            setData({
-                selectedSeat: [...data.selectedSeat, box],
-                totalPrice: (data.selectedSeat.length + 1) * order.price
-            })
-
+        if(!selectedSeat.includes(box)){
+            if (selectedSeat.length < 4) {
+                setSelectedSeat([...selectedSeat, box])
+                setData({
+                    selectedSeat: [...data.selectedSeat, box],
+                    totalPrice: (data.selectedSeat.length + 1) * order.price
+                })
         } else {
             Swal.fire({
                 icon: "info",
@@ -49,6 +49,7 @@ function OrderPage() {
                 timer: 1000,
             })
         }
+        } 
     }
 
     const handleCheckOut = () => {

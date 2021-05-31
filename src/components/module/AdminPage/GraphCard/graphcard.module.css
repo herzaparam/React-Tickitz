@@ -1,0 +1,28 @@
+.card {
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(17, 17, 17, 0.08);
+    border-radius: 4px;
+    padding: 2em;
+}
+.card > h4 {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #151522;
+}
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tabs > button {
+    border:  none;
+    background: none;
+    outline: none;
+    font-size: 13px;
+    line-height: 18px;
+    color: #5F2EEA;
+}
+button.active{
+    border-bottom: 3px solid #5F2EEA;
+}
