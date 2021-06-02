@@ -63,10 +63,10 @@ here's some preview from this site ..
 <div align="center">
   <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/home(rescale).png" alt="Home page">
   <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/movie%20details(rescale).png" alt="Movie Details Page">
-  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/order%20page(rescale).png" alt="Order Page">
-  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/payment%20page(rescale).png" alt="Payment Page">
+  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/3order%20page(rescale).png" alt="Order Page">
+  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/4payment%20page(rescale).png" alt="Payment Page">
   <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/ticket%20page(rescale).png" alt="Ticket Page">
-  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/edit%20profile(rescale).png" alt="Edit Profile">
+  <img width="400" src="https://github.com/herzaparam/React-Tickitz/blob/main/src/assets/image/2edit%20profile(rescale).png" alt="Edit Profile">
 </div>
 
 ## Publication
