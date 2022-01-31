@@ -58,35 +58,27 @@ export class Home extends Component {
         return self.indexOf(value) === index;
       });
       const minVal = Math.min(parseInt(uniqueList, 10));
-      this.state.monthActive = this.state.months[minVal - 1];
 
       // setListperMonth method logic
       const listPerMonth = this.props.upFilms?.filter((value) => {
         return parseInt(value.release_date.split('-')[1]) === minVal;
       });
-      this.state.upFilmPerMonth = listPerMonth;
-    } else {
       this.setState({
-        monthActive: _month,
+        monthActive: '',
+        upFilmPerMonth: listPerMonth,
       });
+    } else {
       const monthNumber = this.state.months.indexOf(_month) + 1;
       const listPerMonth = this.props.upFilms?.filter((value) => {
         return parseInt(value.release_date.split('-')[1]) === monthNumber;
       });
-      this.state.upFilmPerMonth = listPerMonth;
+      this.setState({ monthActive: _month, upFilmPerMonth: listPerMonth });
     }
-  };
-  renderEmpty = () => {
-    return (
-      <div>
-        <h3>No film</h3>
-      </div>
-    );
   };
 
   render() {
+    let { months, monthActive, upFilmPerMonth } = this.state;
     console.log('hehe2', this.state);
-    console.log('hehe3', this.props);
     return (
       <div>
         <MyNavbar />
@@ -150,12 +142,10 @@ export class Home extends Component {
               </p>
             </div>
             <div className={style['overflow']}>
-              {this.state.months.map((month) => {
+              {months.map((month) => {
                 return (
                   <button
-                    className={
-                      style[this.state.monthActive === month && 'active']
-                    }
+                    className={style[monthActive === month && 'active']}
                     onClick={() => this.getInitialMonth(month)}
                   >
                     {month}
@@ -167,18 +157,45 @@ export class Home extends Component {
               className={[style['cont-up-movies'], style['overflow']].join(' ')}
               id={style['style-2']}
             >
-              {this.state.upFilmPerMonth?.map((item) => (
-                <MyCard
-                  title={item.title}
-                  genre={item.genre}
-                  img={
-                    item.image ??
-                    `${process.env.REACT_APP_BASE_URL_IMAGE}${item.poster_path}`
-                  }
-                  routeChange={() => this.routeChangeById(item.movie_Id)}
-                  key={item.movie_Id}
-                />
-              ))}
+              {upFilmPerMonth.length !== 0 ? (
+                upFilmPerMonth?.map((item) => (
+                  <MyCard
+                    title={item.title}
+                    genre={item.genre}
+                    img={
+                      item.image ??
+                      `${process.env.REACT_APP_BASE_URL_IMAGE}${item.poster_path}`
+                    }
+                    routeChange={() => this.routeChangeById(item.movie_Id)}
+                    key={item.movie_Id}
+                  />
+                ))
+              ) : monthActive === '' && this.props.upFilms.length !== 0 ? (
+                this.props.upFilms?.map((item) => (
+                  <MyCard
+                    title={item.title}
+                    genre={item.genre}
+                    img={
+                      item.image ??
+                      `${process.env.REACT_APP_BASE_URL_IMAGE}${item.poster_path}`
+                    }
+                    routeChange={() => this.routeChangeById(item.movie_Id)}
+                    key={item.movie_Id}
+                  />
+                ))
+              ) : (
+                <div style={{ width: '100%', height: '250px' }}>
+                  <h3
+                    style={{
+                      color: '#5F2EEA',
+                      textAlign: 'center',
+                      lineHeight: '250px',
+                    }}
+                  >
+                    No film
+                  </h3>
+                </div>
+              )}
             </div>
           </section>
           <section className={style['section-four']}>
