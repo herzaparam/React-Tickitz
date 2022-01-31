@@ -11,8 +11,8 @@ export const getLocation = (city) =>  (dispatch) => {
             .catch((err) => {
                 reject(Swal.fire({
                     icon: "error",
-                    title: "oops..",
-                    text: "curently can not get cinema ",
+                    title: "Unfortunately",
+                    text: "Order ticket feature isn't available right now",
                 }))
             })
         })

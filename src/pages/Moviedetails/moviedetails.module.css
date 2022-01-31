@@ -29,6 +29,7 @@
 .flex-col{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .grid-2{
     display: grid;

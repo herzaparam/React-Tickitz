@@ -166,8 +166,8 @@ export class Home extends Component {
                       item.image ??
                       `${process.env.REACT_APP_BASE_URL_IMAGE}${item.poster_path}`
                     }
-                    routeChange={() => this.routeChangeById(item.movie_Id)}
-                    key={item.movie_Id}
+                    routeChange={() => this.routeChangeById(item.id)}
+                    key={item.id}
                   />
                 ))
               ) : monthActive === '' && this.props.upFilms.length !== 0 ? (
@@ -179,8 +179,8 @@ export class Home extends Component {
                       item.image ??
                       `${process.env.REACT_APP_BASE_URL_IMAGE}${item.poster_path}`
                     }
-                    routeChange={() => this.routeChangeById(item.movie_Id)}
-                    key={item.movie_Id}
+                    routeChange={() => this.routeChangeById(item.id)}
+                    key={item.id}
                   />
                 ))
               ) : (
