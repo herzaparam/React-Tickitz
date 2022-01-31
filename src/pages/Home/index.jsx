@@ -13,11 +13,33 @@ import { getMovie } from '../../configs/redux/actions/movie';
 import { getUser } from '../../configs/redux/actions/user';
 
 export class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      monthActive: '',
+      upFilmPerMonth: [],
+    };
+  }
   componentDidMount() {
     this.props.getMovie();
     if (localStorage.getItem('token') && this.props.user === '') {
       this.props.getUser();
     }
+    this.getInitialMonth();
   }
   routeChangeById = (id) => {
     this.props.history.push(`/moviedetails/${id}`);
@@ -25,9 +47,46 @@ export class Home extends Component {
   routeChangeSignUp = () => {
     this.props.history.push(`/signup`);
   };
+  getInitialMonth = (_month) => {
+    // const dummyData = ['02', '02', '02', '03', '10'];
+    if (_month === undefined) {
+      const listDate = this.props.upFilms?.map((item) => {
+        return item.release_date.split('-')[1];
+      });
+      // setMontActive method logic
+      const uniqueList = listDate?.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
+      const minVal = Math.min(parseInt(uniqueList, 10));
+      this.state.monthActive = this.state.months[minVal - 1];
+
+      // setListperMonth method logic
+      const listPerMonth = this.props.upFilms?.filter((value) => {
+        return parseInt(value.release_date.split('-')[1]) === minVal;
+      });
+      this.state.upFilmPerMonth = listPerMonth;
+    } else {
+      this.setState({
+        monthActive: _month,
+      });
+      const monthNumber = this.state.months.indexOf(_month) + 1;
+      const listPerMonth = this.props.upFilms?.filter((value) => {
+        return parseInt(value.release_date.split('-')[1]) === monthNumber;
+      });
+      this.state.upFilmPerMonth = listPerMonth;
+    }
+  };
+  renderEmpty = () => {
+    return (
+      <div>
+        <h3>No film</h3>
+      </div>
+    );
+  };
 
   render() {
-    console.log('hoho', this.props.nowFilms);
+    console.log('hehe2', this.state);
+    console.log('hehe3', this.props);
     return (
       <div>
         <MyNavbar />
@@ -62,7 +121,7 @@ export class Home extends Component {
           >
             <h3 style={{ color: '#5F2EEA' }}>Now Showing</h3>
             <p style={{ color: '#5F2EEA' }}>
-              <Link to="/allmovies">view alll</Link>
+              <Link to="/allmovies">view all</Link>
             </p>
           </div>
           <div className={style['card-show']} id={style['style-2']}>
@@ -91,24 +150,24 @@ export class Home extends Component {
               </p>
             </div>
             <div className={style['overflow']}>
-              <button>January</button>
-              <button>February</button>
-              <button>March</button>
-              <button>April</button>
-              <button>May</button>
-              <button>June</button>
-              <button>July</button>
-              <button>August</button>
-              <button>September</button>
-              <button>Oktober</button>
-              <button>November</button>
-              <button>December</button>
+              {this.state.months.map((month) => {
+                return (
+                  <button
+                    className={
+                      style[this.state.monthActive === month && 'active']
+                    }
+                    onClick={() => this.getInitialMonth(month)}
+                  >
+                    {month}
+                  </button>
+                );
+              })}
             </div>
             <div
               className={[style['cont-up-movies'], style['overflow']].join(' ')}
               id={style['style-2']}
             >
-              {this.props.upFilms?.map((item) => (
+              {this.state.upFilmPerMonth?.map((item) => (
                 <MyCard
                   title={item.title}
                   genre={item.genre}

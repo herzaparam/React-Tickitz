@@ -155,6 +155,10 @@ h3 > a {
   color: #5f2eea;
   margin: 0 5px;
 }
+.overflow .active {
+  background-color: #5f2eea;
+  color: white;
+}
 .cont-up-movies {
   display: flex;
   height: 400px;
