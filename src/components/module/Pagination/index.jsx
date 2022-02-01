@@ -57,7 +57,7 @@ function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
               paginate(currentPage - 1);
               changePage(currentPage - 1, 'prev');
             }}
-            className="page-link"
+            className={['page-link', style['btn-pag']].join(' ')}
             disabled={currentPage === 1}
           >
             prev
@@ -67,7 +67,7 @@ function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
           <li className="page-item">
             <button
               onClick={() => reset('reset')}
-              className="page-link"
+              className={['page-link', style['btn-pag']].join(' ')}
               disabled={currentPage === 1}
             >
               ...
@@ -84,7 +84,7 @@ function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
                 paginate(number);
                 changePage(number, 'number');
               }}
-              className="page-link"
+              className={['page-link', style['btn-pag']].join(' ')}
             >
               {number}
             </button>
@@ -94,7 +94,7 @@ function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
           <li className="page-item">
             <button
               onClick={() => reset('forward')}
-              className="page-link"
+              className={['page-link', style['btn-pag']].join(' ')}
               disabled={currentPage === pageNumbers.length}
             >
               ...
@@ -107,7 +107,7 @@ function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
               paginate(currentPage + 1);
               changePage(currentPage + 1, 'next');
             }}
-            className="page-link"
+            className={['page-link', style['btn-pag']].join(' ')}
             disabled={currentPage === pageNumbers.length}
           >
             next

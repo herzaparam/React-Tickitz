@@ -116,7 +116,7 @@ function ViewFilm() {
               <p className={style['card-text']}>{item.genre}</p>
               <button
                 className={style.button}
-                onClick={(e) => routeChangeById(item.movie_Id)}
+                onClick={(e) => routeChangeById(item.id)}
               >
                 Book Now
               </button>

@@ -1,3 +1,10 @@
 .pagination-style{
     margin: 3em 0;
 }
+.btn-pag {
+    color: #5f2eea;
+}
+.active {
+    background-color: #5f2eea;
+    color: white;
+}
